@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Structura</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/pages.css">
+    <link rel="stylesheet" href="css/contact.css">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+</head>
+<body>
+    <header class="site-header">
+        <div class="header-inner container">
+            <a href="index.html" class="brand-logo"><svg width="28" height="28" viewBox="0 -4 40 44" fill="none" xmlns="http://www.w3.org/2000/svg" class="brand-logomark"><path d="M6 12 L20 20 L20 36 L6 28 Z" fill="currentColor" opacity="0.4"/><path d="M20 20 L34 12 L34 28 L20 36 Z" fill="currentColor"/><path d="M20 -2 L34 6 L20 14 L6 6 Z" fill="var(--clr-gold)"/></svg><span class="brand-text">Structura</span></a>
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li class="has-dropdown"><a href="index.html" class="nav-link">Visions ▾</a>
+                        <ul class="dropdown-menu"><li><a href="index.html">Studio Approach</a></li><li><a href="home2.html">Global Scale</a></li></ul>
+                    </li>
+                    <li><a href="about.html" class="nav-link">Philosophy</a></li>
+                    <li><a href="products.html" class="nav-link">Structures</a></li>
+                    <li><a href="custom-branding.html" class="nav-link">Finishes</a></li>
+                    <li><a href="bulk-orders.html" class="nav-link">Enterprise</a></li>
+                    <li><a href="contact.html" class="nav-link active">Consultation</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <button id="theme-toggle" class="icon-btn"><span class="icon"><i class="ph ph-sun"></i></span></button>
+                <button id="dir-toggle" class="icon-btn">LTR</button>
+                <a href="contact.html" class="btn btn-primary btn-sm">Get Quote</a>
+                <button class="menu-toggle"><span></span><span></span><span></span></button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- 33. Map/Form Overlap Hero -->
+        <section class="hero-contact" style="position: relative; overflow: hidden;">
+            <img src="images/hero-contact.png" alt="Contact Us" class="real-img" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.3; z-index: 0;">
+            <div class="map-bg"></div>
+            <div class="container contact-container" style="position: relative; z-index: 1;">
+                <div class="contact-left reveal-left">
+                    <span class="label-mono">Get in Touch</span>
+                    <h1 style="margin: var(--sp-6) 0;">Request a Quote.</h1>
+                    <p style="margin-bottom: var(--sp-12); font-size: 1.25rem;">Tell us about your product, desired packaging style, and target volume. Our structural engineers will review your requirements.</p>
+                    <div>
+                        <h4 style="margin-bottom: var(--sp-4); color: var(--clr-gold);">Direct Lines</h4>
+                        <p class="label-mono">Sales: +1 (800) 123-4567<br>Email: hello@structura.com</p>
+                    </div>
+                </div>
+                <div class="contact-right reveal-right">
+                    <form class="overlap-form">
+                        <input type="text" placeholder="First Name">
+                        <input type="text" placeholder="Last Name">
+                        <input type="email" placeholder="Work Email">
+                        <select style="appearance: none;">
+                            <option>Rigid Setup Box</option>
+                            <option>Corrugated Mailer</option>
+                            <option>Folding Carton</option>
+                        </select>
+                        <select style="appearance: none;">
+                            <option>5,000 - 10,000 units</option>
+                            <option>10,000+ units</option>
+                        </select>
+                        <button type="button" class="btn btn-primary">Submit Request</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- 34. Tilted Columns (Locations) -->
+        <section class="tilted-section">
+            <div class="container text-center" style="margin-bottom: var(--sp-16);">
+                <span class="label-mono">Infrastructure</span>
+                <h2>Global Facilities</h2>
+            </div>
+            <div class="container tilted-grid reveal">
+                <div class="tilt-col">
+                    <h3 style="color: var(--clr-gold);">New York HQ</h3>
+                    <p class="label-mono" style="margin-bottom: var(--sp-4);">Design Studio</p>
+                    <p>123 Industrial Way<br>Design District, NY 10001</p>
+                </div>
+                <div class="tilt-col">
+                    <h3 style="color: var(--clr-gold);">London</h3>
+                    <p class="label-mono" style="margin-bottom: var(--sp-4);">Euro Hub</p>
+                    <p>45 Clerkenwell Rd<br>Farringdon, London EC1M</p>
+                </div>
+                <div class="tilt-col">
+                    <h3 style="color: var(--clr-gold);">Shenzhen</h3>
+                    <p class="label-mono" style="margin-bottom: var(--sp-4);">Mass Production</p>
+                    <p>Bao'an Industrial Park<br>Shenzhen, GD 518100</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 35. Masonry FAQ -->
+        <section class="faq-section">
+            <div class="container text-center" style="margin-bottom: var(--sp-12);">
+                <h2>Frequently Asked Questions</h2>
+            </div>
+            <div class="container faq-masonry reveal delay-1">
+                <div class="faq-item">
+                    <h4>What is your MOQ?</h4>
+                    <p>Our standard MOQ is 500 units for rigid boxes and 1,000 units for folding cartons to ensure competitive pricing.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>Do you provide 2D dielines?</h4>
+                    <p>Yes. Once structural dimensions are locked in, our engineering team provides a 100% accurate 2D dieline for your designers.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>How long is mass production?</h4>
+                    <p>Structural prototyping takes 7 days. Once approved, mass production takes 15-20 days depending on finish complexity.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>Can you ship globally?</h4>
+                    <p>Yes. We offer split shipping to multiple global fulfillment centers direct from our factories.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 36. Folder Tab Resources -->
+        <section class="resources-section">
+            <div class="container text-center" style="margin-bottom: var(--sp-12);">
+                <span class="label-mono">Downloads</span>
+                <h2>Technical Resources</h2>
+            </div>
+            <div class="container folder-grid reveal delay-2">
+                <div class="folder">
+                    <div class="folder-icon"><i class="ph ph-file-text"></i></div>
+                    <h4>Print Guidelines</h4>
+                    <p class="label-mono">PDF - 2.4MB</p>
+                </div>
+                <div class="folder">
+                    <div class="folder-icon"><i class="ph ph-palette"></i></div>
+                    <h4>Material Swatches</h4>
+                    <p class="label-mono">ZIP - 15MB</p>
+                </div>
+                <div class="folder">
+                    <div class="folder-icon"><i class="ph ph-ruler"></i></div>
+                    <h4>Standard Dielines</h4>
+                    <p class="label-mono">AI / EPS</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 37. Newsletter Mega-Input CTA -->
+        <section class="newsletter-section">
+            <div class="container">
+                <div class="newsletter-card reveal">
+                    <div class="newsletter-visual">
+                        <img src="images/contact-sustainability.png" alt="Sustainable Materials R&D" class="real-img" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="newsletter-content">
+                        <span class="label-mono" style="margin-bottom: var(--sp-4);">Stay Updated</span>
+                        <h2 style="font-size: 2.5rem; margin-bottom: var(--sp-4);">Industry Insights</h2>
+                        <p class="newsletter-benefit">Get quarterly insights on sustainable material innovations, structural engineering trends, and global supply chain logistics.</p>
+                        <form class="mega-newsletter-form">
+                            <input type="email" placeholder="ENTER EMAIL ADDRESS">
+                            <button type="button" class="btn btn-primary" style="align-self: flex-start; margin-top: var(--sp-4);">Subscribe</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+        <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="footer-logo"><svg width="28" height="28" viewBox="0 -4 40 44" fill="none" xmlns="http://www.w3.org/2000/svg" class="brand-logomark"><path d="M6 12 L20 20 L20 36 L6 28 Z" fill="currentColor" opacity="0.4"/><path d="M20 20 L34 12 L34 28 L20 36 Z" fill="currentColor"/><path d="M20 -2 L34 6 L20 14 L6 6 Z" fill="var(--clr-gold)"/></svg><span class="brand-text" style="margin-left: 8px;">Structura</span></a>
+                    <p style="max-width: 300px; color: var(--clr-text-2);">Engineering the perfect unboxing experience for premium brands globally.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link" aria-label="LinkedIn"><i class="ph ph-linkedin-logo"></i></a>
+                        <a href="#" class="social-link" aria-label="Instagram"><i class="ph ph-instagram-logo"></i></a>
+                        <a href="#" class="social-link" aria-label="Twitter"><i class="ph ph-x-logo"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="footer-heading">Company</h4>
+                    <div class="footer-links">
+                        <a href="index.html">Home</a>
+                        <a href="about.html">About Us</a>
+                        <a href="contact.html">Consultation</a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="footer-heading">Services</h4>
+                    <div class="footer-links">
+                        <a href="products.html">Product Structures</a>
+                        <a href="custom-branding.html">Custom Branding</a>
+                        <a href="bulk-orders.html">Volume & Logistics</a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="footer-heading">Consultation</h4>
+                    <div class="footer-links">
+                        <a href="contact.html">hello@structura.com</a>
+                        <a href="contact.html">+1 (800) 123-4567</a>
+                        <a href="contact.html">Request a Quote</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>&copy; 2026 Structura. All rights reserved.</span>
+                <div class="footer-bottom-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms & Conditions</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/animations.js"></script>
+</body>
+</html>

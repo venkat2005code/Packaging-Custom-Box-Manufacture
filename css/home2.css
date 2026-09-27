@@ -1,0 +1,80 @@
+/* ============================================================
+   BOXCRAFT PRO — Home 2 (Ultra-Premium Industry)
+   ============================================================ */
+
+/* ─── 6. Brutalist Split Hero (Existing) ─────────────────────── */
+.hero-industry {
+  min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; background: var(--clr-bg);
+}
+.industry-left { padding: var(--sp-24) var(--container-pad); display: flex; flex-direction: column; justify-content: center; }
+.industry-right { position: relative; overflow: hidden; }
+.industry-right .img-ph { position: absolute; inset: 0; border-radius: 0; border: none; }
+
+/* ─── 7. Massive Stats (Existing) ────────────────────────────── */
+.stats-row {
+  display: flex; border-block: 1px solid var(--clr-border); background: var(--clr-surface);
+}
+.stat-box { flex: 1; padding: var(--sp-12) var(--container-pad); border-right: 1px solid var(--clr-border); }
+.stat-box:last-child { border-right: none; }
+[dir="rtl"] .stat-box { border-right: none; border-left: 1px solid var(--clr-border); }
+[dir="rtl"] .stat-box:last-child { border-left: none; }
+.stat-box h3 { color: var(--clr-text); margin-bottom: var(--sp-2); }
+
+/* ─── 8. Problem/Solution (Diagonal Split) ───────────────────── */
+.diagonal-split-section {
+  position: relative; overflow: hidden; padding-block: var(--sp-32);
+  background: var(--clr-bg);
+}
+.diagonal-bg {
+  position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0;
+  background: linear-gradient(105deg, var(--clr-surface-2) 50%, var(--clr-bg) 50%);
+}
+[dir="rtl"] .diagonal-bg { background: linear-gradient(-105deg, var(--clr-surface-2) 50%, var(--clr-bg) 50%); }
+.diagonal-content { position: relative; z-index: 1; }
+
+/* ─── 9. Case Studies (Featured + Split Grid) ─────────────────── */
+.industry-gallery { padding-block: var(--sp-32); background: var(--clr-surface); }
+.gallery-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--sp-8); }
+.gal-item { border-radius: 0; overflow: hidden; position: relative; }
+.gal-item .real-img { border-radius: 0; transition: transform var(--t-slow); border: none; }
+.gal-item:hover .real-img { transform: scale(1.05); }
+
+.gal-1 { grid-column: 1 / -1; aspect-ratio: 21/9; }
+.gal-2 { grid-column: 1; aspect-ratio: 16/9; }
+.gal-3 { grid-column: 2; aspect-ratio: 16/9; }
+
+/* ─── 10. CTA (Monolith Split) ───────────────────────── */
+.monolith-cta-section { padding-block: var(--sp-32); background: var(--clr-bg); }
+.monolith-block {
+  background: #000; border: 1px solid var(--clr-border-dark); border-radius: 0;
+  display: grid; grid-template-columns: 1fr 1fr;
+}
+.monolith-visual { position: relative; border-right: 1px solid var(--clr-border-dark); min-height: 400px; }
+.monolith-visual .img-ph { position: absolute; inset: 0; border: none; border-radius: 0; }
+.monolith-content { padding: var(--sp-16); display: flex; flex-direction: column; justify-content: center; }
+.monolith-benefit { color: var(--clr-text-2); margin-bottom: var(--sp-8); font-size: 1.125rem; line-height: 1.6; max-width: 500px; }
+.inline-brutalist-form {
+  display: flex; flex-direction: column; gap: var(--sp-6); width: 100%; max-width: 500px;
+}
+.inline-brutalist-form input {
+  background: transparent; border: none; border-bottom: 2px solid var(--clr-text-3);
+  font-family: var(--font-display); font-size: 1.75rem; color: var(--clr-text);
+  padding: var(--sp-2) 0; outline: none; border-radius: 0;
+}
+.inline-brutalist-form input:focus { border-bottom-color: var(--clr-gold); }
+.inline-brutalist-form button {
+  background: var(--clr-gold); color: #000; font-family: var(--font-label);
+  font-size: 1.5rem; text-transform: uppercase; padding: var(--sp-6); margin-top: var(--sp-8);
+  transition: all var(--t-fast);
+}
+.inline-brutalist-form button:hover { background: #fff; }
+
+@media (max-width: 1024px) {
+  .hero-industry { grid-template-columns: 1fr; }
+  .industry-right { min-height: 50vh; }
+  .stats-row { flex-direction: column; }
+  .stat-box { border-right: none; border-bottom: 1px solid var(--clr-border); }
+  .gal-1, .gal-2, .gal-3 { grid-column: 1 / -1; margin-top: 0; aspect-ratio: 16/9; }
+  .diagonal-bg { background: linear-gradient(180deg, var(--clr-surface-2) 50%, var(--clr-bg) 50%); }
+  .inline-brutalist-form input { font-size: 2rem; }
+}

@@ -1,0 +1,121 @@
+/* ============================================================
+   BOXCRAFT PRO — About (Layouts 11-16)
+   ============================================================ */
+
+/* ─── 11. Dock Hero ──────────────────────────────────────────── */
+.hero-dock {
+  position: relative; min-height: 80vh; background: var(--clr-surface-2);
+  display: flex; align-items: flex-end; justify-content: center;
+  padding-bottom: var(--sp-8); overflow: hidden;
+}
+.hero-dock .img-ph { position: absolute; inset: 0; border: none; border-radius: 0; opacity: 0.2; }
+.dock-card {
+  position: relative; z-index: 2; width: calc(100% - var(--sp-8)); max-width: 1000px;
+  background: rgba(10, 10, 10, 0.6); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.1); border-radius: var(--r-xl);
+  padding: var(--sp-12); text-align: center;
+}
+[data-theme="light"] .dock-card { background: rgba(255,255,255,0.7); }
+
+/* ─── 12. Accordion Cards (Mission/Vision) ───────────────────── */
+.accordion-grid {
+  display: flex; gap: var(--sp-4); height: 500px;
+}
+.acc-card {
+  flex: 1; background: var(--clr-surface-2); border-radius: var(--r-xl);
+  padding: var(--sp-8); transition: flex var(--t-slow), background var(--t-fast);
+  overflow: hidden; display: flex; flex-direction: column; cursor: pointer;
+  border: 1px solid var(--clr-border);
+}
+.acc-card:hover { flex: 2; background: var(--clr-surface-3); }
+.acc-card .acc-content { opacity: 0; transition: opacity var(--t-base); margin-top: auto; }
+.acc-card:hover .acc-content { opacity: 1; transition-delay: 0.3s; }
+.acc-title { font-size: 2.5rem; writing-mode: vertical-rl; transform: rotate(180deg); margin: auto; transition: var(--t-base); }
+.acc-card:hover .acc-title { writing-mode: horizontal-tb; transform: none; font-size: 3rem; margin: 0 0 var(--sp-4) 0; }
+
+/* ─── 13. Map Silhouette ─────────────────────────────────────── */
+.map-section { background: var(--clr-bg); position: relative; padding-block: var(--sp-24); }
+.map-visual {
+  position: relative; aspect-ratio: 2/1; width: 100%; max-width: 1000px; margin: var(--sp-12) auto;
+  background: radial-gradient(circle, var(--clr-border-dark) 2px, transparent 2px);
+  background-size: 20px 20px; border-radius: var(--r-full);
+}
+.map-dot {
+  position: absolute; width: 20px; height: 20px; background: var(--clr-gold);
+  border-radius: 50%; box-shadow: 0 0 20px var(--clr-gold);
+}
+.map-dot::after {
+  content: ''; position: absolute; inset: -10px; border: 1px solid var(--clr-gold);
+  border-radius: 50%; animation: pulse 2s infinite;
+}
+@keyframes pulse { 0% { transform: scale(1); opacity: 1; } 100% { transform: scale(2); opacity: 0; } }
+.ny-dot { top: 30%; left: 25%; }
+.ln-dot { top: 25%; left: 45%; }
+.sz-dot { top: 40%; left: 80%; }
+.map-labels { display: flex; justify-content: center; gap: var(--sp-12); }
+
+/* ─── 14. Concentric Venn Diagram ────────────────────────────── */
+.venn-section { background: var(--clr-surface); text-align: center; overflow: hidden; }
+.venn-container {
+  position: relative; height: 600px; display: flex; align-items: center; justify-content: center;
+}
+.venn-circle {
+  position: absolute; width: 400px; height: 400px; border-radius: 50%;
+  border: 2px dashed var(--clr-border-dark); display: flex; align-items: center; justify-content: center;
+  flex-direction: column; padding: var(--sp-8);
+}
+.venn-circle p { max-width: 250px; text-align: center; line-height: 1.5; }
+.venn-1 { transform: translateX(-150px); background: rgba(20,20,20,0.5); backdrop-filter: blur(8px); z-index: 1; }
+.venn-2 { transform: translateX(150px); background: rgba(20,20,20,0.5); backdrop-filter: blur(8px); z-index: 2; }
+[data-theme="light"] .venn-1, [data-theme="light"] .venn-2 { background: rgba(240,240,240,0.5); }
+
+/* ─── 15. Vertical Timeline ──────────────────────────────────── */
+.timeline-section { background: var(--clr-bg); }
+.timeline-wrap { position: relative; max-width: 800px; margin: 0 auto; padding-block: var(--sp-12); }
+.timeline-wrap::before {
+  content: ''; position: absolute; top: 0; bottom: 0; left: 50%;
+  width: 2px; background: var(--clr-border-dark); transform: translateX(-50%);
+}
+.tl-item {
+  display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--sp-12); position: relative;
+}
+.tl-content { width: 45%; background: var(--clr-surface-2); padding: var(--sp-6); border-radius: var(--r-md); }
+.tl-item:nth-child(even) .tl-content { margin-left: auto; }
+.tl-dot {
+  position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+  width: 16px; height: 16px; background: var(--clr-gold); border-radius: 50%;
+}
+
+/* ─── 16. Split Hover CTA (Existing) ─────────────────────── */
+.split-hover-section { display: flex; height: 60vh; }
+.split-panel {
+  flex: 1; position: relative; overflow: hidden;
+  display: flex; flex-direction: column; justify-content: center; align-items: center;
+  transition: flex var(--t-base); border-right: 1px solid var(--clr-border);
+}
+.split-panel-bg { position: absolute; inset: 0; z-index: 0; opacity: 0.3; transition: opacity var(--t-base), transform var(--t-slow); }
+.split-panel-bg .real-img { position: absolute; inset: 0; border: none; border-radius: 0; }
+.split-panel:hover .split-panel-bg { opacity: 0.15; transform: scale(1.05); }
+
+.split-panel-content { position: relative; z-index: 1; text-align: center; padding: var(--sp-8); }
+.split-panel:last-child { border-right: none; }
+.split-panel:hover { flex: 1.2; }
+.split-panel h2 { margin-bottom: var(--sp-4); transition: transform var(--t-base); }
+.split-panel:hover h2 { transform: scale(1.05); }
+
+.split-benefit {
+  max-width: 400px; margin: 0 auto var(--sp-6); color: var(--clr-text-2); font-size: 1.125rem;
+  opacity: 0; transform: translateY(10px); transition: all var(--t-base); height: 0; overflow: hidden;
+}
+.split-panel:hover .split-benefit { opacity: 1; transform: translateY(0); height: auto; }
+.split-half h2 { font-size: clamp(2rem, 5vw, 4rem); color: inherit; }
+
+@media (max-width: 1024px) {
+  .accordion-grid { flex-direction: column; height: auto; }
+  .acc-title { writing-mode: horizontal-tb; transform: none; font-size: 2rem; }
+  .venn-1, .venn-2 { position: static; transform: none; width: 100%; max-width: 400px; margin: 0 auto var(--sp-4); }
+  .timeline-wrap::before { left: 0; }
+  .tl-content { width: 90%; margin-left: auto !important; }
+  .tl-dot { left: 0; }
+  .split-cta-section { flex-direction: column; height: auto; min-height: 80vh; }
+}

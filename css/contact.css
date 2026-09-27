@@ -1,0 +1,98 @@
+/* ============================================================
+   BOXCRAFT PRO — Contact (Layouts 33-37)
+   ============================================================ */
+
+/* ─── 33. Map/Form Overlap Hero ──────────────────────────────── */
+.hero-contact {
+  position: relative; min-height: 100vh; background: var(--clr-bg);
+  display: flex; align-items: center; overflow: hidden;
+}
+.map-bg {
+  position: absolute; left: -10%; top: 10%; width: 60%; height: 80%;
+  background-image: radial-gradient(circle, var(--clr-border-dark) 2px, transparent 2px);
+  background-size: 20px 20px; opacity: 0.3; border-radius: 50%; pointer-events: none;
+}
+.contact-container { position: relative; z-index: 2; width: 100%; display: flex; justify-content: space-between; }
+.contact-left { max-width: 500px; }
+.contact-right { flex: 1; display: flex; justify-content: flex-end; }
+.overlap-form {
+  background: rgba(10, 10, 10, 0.8); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
+  border: 1px solid var(--clr-border); border-radius: var(--r-xl); padding: var(--sp-12);
+  width: 100%; max-width: 500px; box-shadow: 0 40px 80px rgba(0,0,0,0.5);
+}
+.overlap-form input, .overlap-form select {
+  width: 100%; background: transparent; border: none; border-bottom: 1px solid var(--clr-border-dark);
+  color: var(--clr-text); padding: var(--sp-4) 0; margin-bottom: var(--sp-6); outline: none; font-family: var(--font-body);
+}
+.overlap-form input:focus, .overlap-form select:focus { border-bottom-color: var(--clr-gold); }
+.overlap-form button { width: 100%; margin-top: var(--sp-8); }
+
+/* ─── 34. Tilted Columns (Locations) ─────────────────────────── */
+.tilted-section { padding-block: var(--sp-32); background: var(--clr-surface); overflow: hidden; }
+.tilted-grid { display: flex; gap: var(--sp-8); justify-content: center; }
+.tilt-col {
+  width: 300px; background: var(--clr-bg); padding: var(--sp-12);
+  border-radius: var(--r-xl); border: 1px solid var(--clr-border-dark);
+  transform: rotate(-5deg); transition: transform var(--t-base), border var(--t-fast);
+}
+.tilt-col:nth-child(even) { transform: translateY(40px) rotate(-5deg); }
+.tilt-col:hover { transform: rotate(0deg) scale(1.05); border-color: var(--clr-gold); z-index: 2; }
+.tilt-col h3 { margin-bottom: var(--sp-2); }
+
+/* ─── 35. Masonry FAQ ────────────────────────────────────────── */
+.faq-section { padding-block: var(--sp-32); background: var(--clr-bg); }
+.faq-masonry { column-count: 2; column-gap: var(--sp-8); }
+.faq-item {
+  break-inside: avoid; background: var(--clr-surface-2); padding: var(--sp-8);
+  border-radius: var(--r-md); margin-bottom: var(--sp-8);
+}
+.faq-item h4 { margin-bottom: var(--sp-4); color: var(--clr-gold); }
+
+/* ─── 36. Folder Tab Resources ───────────────────────────────── */
+.resources-section { padding-block: var(--sp-32); background: var(--clr-surface); }
+.folder-grid { display: flex; justify-content: center; gap: var(--sp-8); flex-wrap: wrap; }
+.folder {
+  position: relative; width: 300px; height: 200px; background: var(--clr-bg);
+  border: 1px solid var(--clr-border); border-radius: 0 8px 8px 8px;
+  padding: var(--sp-8); display: flex; flex-direction: column; justify-content: center;
+  transition: transform var(--t-base); cursor: pointer;
+}
+.folder::before {
+  content: ''; position: absolute; top: -30px; left: -1px; width: 120px; height: 30px;
+  background: var(--clr-bg); border: 1px solid var(--clr-border); border-bottom: none;
+  border-radius: 8px 8px 0 0;
+}
+.folder:hover { transform: translateY(-10px); border-color: var(--clr-gold); }
+.folder:hover::before { border-color: var(--clr-gold); }
+.folder-icon { font-size: 2rem; margin-bottom: var(--sp-2); }
+
+/* ─── 37. Newsletter Mega-Input CTA ────────────────────────────── */
+.newsletter-section { padding-block: var(--sp-32); background: var(--clr-bg); }
+.newsletter-card {
+  display: grid; grid-template-columns: 1fr 1fr; border-radius: var(--r-xl); overflow: hidden;
+  background: var(--clr-surface); border: 1px solid var(--clr-border); box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+}
+.newsletter-visual { position: relative; min-height: 400px; }
+.newsletter-visual .real-img { position: absolute; inset: 0; border: none; border-radius: 0; }
+.newsletter-content { padding: var(--sp-16); display: flex; flex-direction: column; justify-content: center; }
+.newsletter-benefit { color: var(--clr-text-2); font-size: 1.125rem; margin-bottom: var(--sp-8); max-width: 450px; }
+.mega-newsletter-form { display: flex; flex-direction: column; gap: var(--sp-6); }
+.mega-newsletter-form input {
+  background: transparent; border: none; border-bottom: 2px solid var(--clr-text-3);
+  font-family: var(--font-display); font-size: clamp(1.5rem, 3vw, 2.5rem); color: var(--clr-text);
+  padding: var(--sp-2) 0; outline: none; border-radius: 0; transition: border-color var(--t-fast);
+}
+.mega-newsletter-form input:focus { border-bottom-color: var(--clr-gold); }
+.mega-btn {
+  position: absolute; right: 0; bottom: 20px; background: none; border: none;
+  color: var(--clr-gold); font-family: var(--font-label); font-size: 1.5rem; text-transform: uppercase;
+  cursor: pointer;
+}
+.mega-btn:hover { color: #fff; }
+
+@media (max-width: 1024px) {
+  .contact-container { flex-direction: column; gap: var(--sp-12); padding-top: calc(var(--header-height) + var(--sp-12)); }
+  .tilted-grid { flex-direction: column; align-items: center; }
+  .tilt-col, .tilt-col:nth-child(even) { transform: none; width: 100%; max-width: 400px; }
+  .faq-masonry { column-count: 1; }
+}

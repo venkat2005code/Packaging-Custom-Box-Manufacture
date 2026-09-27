@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | Structura</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/pages.css">
+    <link rel="stylesheet" href="css/about.css">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+</head>
+<body>
+    <header class="site-header">
+        <div class="header-inner container">
+            <a href="index.html" class="brand-logo"><svg width="28" height="28" viewBox="0 -4 40 44" fill="none" xmlns="http://www.w3.org/2000/svg" class="brand-logomark"><path d="M6 12 L20 20 L20 36 L6 28 Z" fill="currentColor" opacity="0.4"/><path d="M20 20 L34 12 L34 28 L20 36 Z" fill="currentColor"/><path d="M20 -2 L34 6 L20 14 L6 6 Z" fill="var(--clr-gold)"/></svg><span class="brand-text">Structura</span></a>
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li class="has-dropdown"><a href="index.html" class="nav-link">Visions ▾</a>
+                        <ul class="dropdown-menu"><li><a href="index.html">Studio Approach</a></li><li><a href="home2.html">Global Scale</a></li></ul>
+                    </li>
+                    <li><a href="about.html" class="nav-link active">Philosophy</a></li>
+                    <li><a href="products.html" class="nav-link">Structures</a></li>
+                    <li><a href="custom-branding.html" class="nav-link">Finishes</a></li>
+                    <li><a href="bulk-orders.html" class="nav-link">Enterprise</a></li>
+                    <li><a href="contact.html" class="nav-link">Consultation</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <button id="theme-toggle" class="icon-btn"><span class="icon"><i class="ph ph-sun"></i></span></button>
+                <button id="dir-toggle" class="icon-btn">LTR</button>
+                <a href="contact.html" class="btn btn-primary btn-sm">Get Quote</a>
+                <button class="menu-toggle"><span></span><span></span><span></span></button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- 11. Dock Hero -->
+        <section class="hero-dock">
+            <img src="images/about-hq.png" alt="Structura Global Headquarters" class="real-img" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.2; z-index: 0;">
+            <div class="dock-card reveal">
+                <span class="label-mono">Our Story</span>
+                <h1 style="margin-bottom: var(--sp-4);">Architects of the Unboxing Experience.</h1>
+                <p>We don't just manufacture boxes; we engineer structural brand touchpoints. Founded on the belief that premium products deserve uncompromising presentation.</p>
+            </div>
+        </section>
+
+        <!-- 12. Expanding Accordion Cards -->
+        <section class="section">
+            <div class="container accordion-grid">
+                <div class="acc-card reveal delay-1" style="position: relative;">
+                    <img src="images/about-mission.png" alt="The Mission Background" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; opacity: 0.4;">
+                    <h3 class="acc-title" style="position: relative; z-index: 1;">The Mission</h3>
+                    <div class="acc-content" style="position: relative; z-index: 1;">
+                        <p>Elevate the physical connection between brand and consumer. In a digital world, the unboxing moment is often the first physical interaction. We make it flawless.</p>
+                    </div>
+                </div>
+                <div class="acc-card reveal delay-2" style="position: relative;">
+                    <img src="images/about-vision.png" alt="The Vision Background" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; opacity: 0.4;">
+                    <h3 class="acc-title" style="color: var(--clr-gold); position: relative; z-index: 1;">The Vision</h3>
+                    <div class="acc-content" style="position: relative; z-index: 1;">
+                        <p>Zero-compromise manufacturing at global scale. Bridging the gap between boutique design agencies and industrial-scale offshore mass production.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 13. Map Silhouette -->
+        <section class="map-section">
+            <div class="container text-center reveal">
+                <span class="label-mono">Infrastructure</span>
+                <h2>A Global Footprint.</h2>
+                
+                <div class="map-visual reveal delay-2">
+                    <div class="map-dot ny-dot"></div>
+                    <div class="map-dot ln-dot"></div>
+                    <div class="map-dot sz-dot"></div>
+                </div>
+                
+                <div class="map-labels reveal delay-3">
+                    <div><h4 style="color: var(--clr-gold);">New York</h4><p>HQ & Design</p></div>
+                    <div><h4 style="color: var(--clr-gold);">London</h4><p>Euro Hub</p></div>
+                    <div><h4 style="color: var(--clr-gold);">Shenzhen</h4><p>Mass Production</p></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 14. Concentric Venn Diagram -->
+        <section class="venn-section section">
+            <div class="container">
+                <span class="label-mono">Responsibility</span>
+                <h2>Sustainable Luxury.</h2>
+                <div class="venn-container reveal delay-2">
+                    <div class="venn-circle venn-1" style="overflow: hidden;">
+                        <img src="images/venn-materials.png" alt="Eco Materials" class="real-img" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.5; z-index: -1;">
+                        <h4 style="position: relative; z-index: 1;">Eco-Materials</h4>
+                        <p style="position: relative; z-index: 1;">100% FSC Certified Greyboard & Kraft.</p>
+                    </div>
+                    <div class="venn-circle venn-2" style="overflow: hidden;">
+                        <img src="images/venn-inks.png" alt="Clean Inks" class="real-img" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.5; z-index: -1;">
+                        <h4 style="position: relative; z-index: 1;">Clean Inks</h4>
+                        <p style="position: relative; z-index: 1;">Soy & Water-based VOC-free printing.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 15. Vertical Timeline Approach -->
+        <section class="timeline-section section">
+            <div class="container text-center reveal" style="margin-bottom: var(--sp-12);">
+                <span class="label-mono">Our Approach</span>
+                <h2>Precision over everything.</h2>
+            </div>
+            <div class="container timeline-wrap">
+                <div class="tl-item reveal">
+                    <div class="tl-dot"></div>
+                    <div class="tl-content">
+                        <h4>1. Engineering First</h4>
+                        <p>We treat packaging as an engineering discipline. A beautiful print is worthless if the box collapses.</p>
+                    </div>
+                </div>
+                <div class="tl-item reveal">
+                    <div class="tl-dot"></div>
+                    <div class="tl-content">
+                        <h4>2. Micro-Details</h4>
+                        <p>Obsessing over magnetic tension, board thickness, and perfect 90-degree scores.</p>
+                    </div>
+                </div>
+                <div class="tl-item reveal">
+                    <div class="tl-dot"></div>
+                    <div class="tl-content">
+                        <h4>3. Flawless Execution</h4>
+                        <p>Our QC team rejects any unit that does not meet our strict millimeter tolerances.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 16. Split Hover CTA -->
+        <section class="split-hover-section">
+            <div class="split-panel panel-left reveal-left">
+                <div class="split-panel-bg"><img src="images/about-consultation.png" alt="Design Consultation" class="real-img" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;"></div>
+                <div class="split-panel-content">
+                    <h2>Partner with us</h2>
+                    <p class="split-benefit">Scale your brand with sustainable structures engineered to perform. Get a dedicated account manager and fast-tracked prototyping.</p>
+                    <a href="contact.html" class="btn btn-outline">Start Project</a>
+                </div>
+            </div>
+            <div class="split-panel panel-right reveal-right delay-1">
+                <div class="split-panel-bg"><img src="images/about-engineering.png" alt="Engineering Team" class="real-img" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;"></div>
+                <div class="split-panel-content">
+                    <h2>Join our team</h2>
+                    <p class="split-benefit">Join a team of award-winning engineers and designers redefining the future of global unboxing experiences.</p>
+                    <a href="#" class="btn btn-primary">View Careers</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+        <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="footer-logo"><svg width="28" height="28" viewBox="0 -4 40 44" fill="none" xmlns="http://www.w3.org/2000/svg" class="brand-logomark"><path d="M6 12 L20 20 L20 36 L6 28 Z" fill="currentColor" opacity="0.4"/><path d="M20 20 L34 12 L34 28 L20 36 Z" fill="currentColor"/><path d="M20 -2 L34 6 L20 14 L6 6 Z" fill="var(--clr-gold)"/></svg><span class="brand-text" style="margin-left: 8px;">Structura</span></a>
+                    <p style="max-width: 300px; color: var(--clr-text-2);">Engineering the perfect unboxing experience for premium brands globally.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link" aria-label="LinkedIn"><i class="ph ph-linkedin-logo"></i></a>
+                        <a href="#" class="social-link" aria-label="Instagram"><i class="ph ph-instagram-logo"></i></a>
+                        <a href="#" class="social-link" aria-label="Twitter"><i class="ph ph-x-logo"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="footer-heading">Company</h4>
+                    <div class="footer-links">
+                        <a href="index.html">Home</a>
+                        <a href="about.html">About Us</a>
+                        <a href="contact.html">Consultation</a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="footer-heading">Services</h4>
+                    <div class="footer-links">
+                        <a href="products.html">Product Structures</a>
+                        <a href="custom-branding.html">Custom Branding</a>
+                        <a href="bulk-orders.html">Volume & Logistics</a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="footer-heading">Consultation</h4>
+                    <div class="footer-links">
+                        <a href="contact.html">hello@structura.com</a>
+                        <a href="contact.html">+1 (800) 123-4567</a>
+                        <a href="contact.html">Request a Quote</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>&copy; 2026 Structura. All rights reserved.</span>
+                <div class="footer-bottom-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms & Conditions</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/animations.js"></script>
+</body>
+</html>

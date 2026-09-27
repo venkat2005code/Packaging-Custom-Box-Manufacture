@@ -1,0 +1,88 @@
+/* ============================================================
+   BOXCRAFT PRO — Products (Layouts 17-21)
+   ============================================================ */
+
+/* ─── 17. Waterfall Hero ─────────────────────────────────────── */
+.hero-waterfall { padding-top: calc(var(--header-height) + var(--sp-16)); padding-bottom: var(--sp-24); background: var(--clr-bg); }
+.waterfall-text { text-align: center; margin-bottom: var(--sp-16); }
+.waterfall-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--sp-4); align-items: start; }
+.wf-col { display: flex; flex-direction: column; gap: var(--sp-4); }
+.wf-col:nth-child(2) { margin-top: 40px; }
+.wf-col:nth-child(3) { margin-top: 80px; }
+.wf-col:nth-child(4) { margin-top: 20px; }
+.wf-img { background: var(--clr-surface-2); border-radius: var(--r-md); overflow: hidden; }
+
+/* ─── 18. Horizontal Carousel ────────────────────────────────── */
+.carousel-section { overflow: hidden; padding-block: var(--sp-24); background: var(--clr-surface); }
+.carousel-track {
+  display: flex; gap: var(--sp-6); padding-inline: var(--container-pad);
+  overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none;
+}
+.carousel-track::-webkit-scrollbar { display: none; }
+.carousel-card {
+  min-width: 400px; scroll-snap-align: center; background: var(--clr-bg);
+  padding: var(--sp-6); border: 1px solid var(--clr-border); border-radius: var(--r-xl);
+}
+.carousel-card .img-ph { aspect-ratio: 4/3; margin-bottom: var(--sp-6); border: none; }
+
+/* ─── 19. Stacked Deck (Materials) ───────────────────────────── */
+.deck-section { padding-block: var(--sp-32); background: var(--clr-bg); }
+.deck-container { position: relative; height: 500px; display: flex; justify-content: center; align-items: center; }
+.deck-card {
+  position: absolute; width: 400px; height: 500px; background: var(--clr-surface-2);
+  border: 1px solid var(--clr-border-dark); border-radius: var(--r-xl); padding: var(--sp-8);
+  box-shadow: 0 -20px 40px rgba(0,0,0,0.5); transition: transform var(--t-base);
+}
+.deck-1 { transform: translateY(-40px) scale(0.9); z-index: 1; opacity: 0.6; }
+.deck-2 { transform: translateY(-20px) scale(0.95); z-index: 2; opacity: 0.8; }
+.deck-3 { transform: translateY(0) scale(1); z-index: 3; }
+.deck-container:hover .deck-1 { transform: translateY(-80px) scale(0.9) rotate(-5deg); }
+.deck-container:hover .deck-2 { transform: translateY(-40px) scale(0.95) rotate(5deg); }
+
+/* ─── 20. Bento Box Grid (Inserts) ───────────────────────────── */
+.bento-section { background: var(--clr-surface); padding-block: var(--sp-24); }
+.bento-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); grid-auto-rows: 250px; gap: var(--sp-4);
+}
+.bento-item {
+  background: var(--clr-surface-2); border-radius: var(--r-xl); padding: var(--sp-6);
+  display: flex; flex-direction: column; justify-content: center; position: relative; overflow: hidden;
+}
+.bento-tall { grid-row: span 2; }
+.bento-wide { grid-column: span 2; }
+.bento-huge { grid-column: span 2; grid-row: span 2; }
+.bento-item h4 { z-index: 2; position: relative; }
+.bento-bg { position: absolute; inset: 0; opacity: 0.2; background-size: cover; background-position: center; }
+
+/* ─── 21. Ticket Stub CTA ────────────────────────────────────── */
+.ticket-cta-section { position: relative; padding-block: 150px; display: flex; justify-content: center; align-items: center; overflow: hidden; }
+.ticket-bg-visual { position: absolute; inset: 0; z-index: 0; opacity: 0.5; }
+.ticket-bg-visual .img-ph { border: none; border-radius: 0; position: absolute; inset: 0; }
+.ticket-stub {
+  display: flex; background: var(--clr-gold); color: #000; border-radius: var(--r-lg);
+  max-width: 900px; width: 100%; position: relative; z-index: 1; overflow: hidden;
+  box-shadow: 0 40px 80px rgba(0,0,0,0.5);
+}
+.ticket-left { padding: var(--sp-12); flex: 1; border-right: 2px dashed rgba(0,0,0,0.2); position: relative; }
+.ticket-benefit { margin-top: var(--sp-4); font-size: 1.125rem; font-weight: 500; opacity: 0.8; max-width: 450px; color: #000; }
+.ticket-right { padding: var(--sp-12); display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.05); }
+/* Ticket notches */
+.ticket-stub::before, .ticket-stub::after {
+  content: ''; position: absolute; right: 25%; width: 40px; height: 40px;
+  background: var(--clr-bg); border-radius: 50%; transform: translateX(50%);
+}
+.ticket-stub::before { top: -20px; }
+.ticket-stub::after { bottom: -20px; }
+
+@media (max-width: 1024px) {
+  .waterfall-grid { grid-template-columns: repeat(2, 1fr); }
+  .wf-col:nth-child(even) { margin-top: 40px; }
+  .wf-col:nth-child(odd) { margin-top: 0; }
+  .bento-grid { grid-template-columns: 1fr; grid-auto-rows: auto; }
+  .bento-tall, .bento-wide, .bento-huge { grid-column: span 1; grid-row: span 1; min-height: 250px; }
+  .ticket-stub { flex-direction: column; }
+  .ticket-main { border-right: none; border-bottom: 3px dashed rgba(0,0,0,0.2); }
+  .ticket-stub::before, .ticket-stub::after { right: 50%; transform: translateX(50%); left: auto; }
+  .ticket-stub::before { left: -20px; right: auto; top: auto; bottom: 25%; transform: translateY(50%); }
+  .ticket-stub::after { right: -20px; left: auto; top: auto; bottom: 25%; transform: translateY(50%); }
+}

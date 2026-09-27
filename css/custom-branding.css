@@ -1,0 +1,94 @@
+/* ============================================================
+   BOXCRAFT PRO — Custom Branding (Layouts 22-27)
+   ============================================================ */
+
+/* ─── 22. Orb Hero ───────────────────────────────────────────── */
+.hero-orb {
+  position: relative; min-height: 100vh; display: flex; align-items: center; justify-content: center;
+  overflow: hidden; background: var(--clr-bg);
+}
+.orb-bg {
+  position: absolute; width: 60vw; height: 60vw; border-radius: 50%;
+  background: radial-gradient(circle, var(--clr-gold-glow) 0%, transparent 70%);
+  filter: blur(80px); opacity: 0.3; animation: orbFloat 10s infinite alternate;
+}
+@keyframes orbFloat { 0% { transform: translate(-10%, -10%); } 100% { transform: translate(10%, 10%); } }
+.orb-content { position: relative; z-index: 1; text-align: center; }
+
+/* ─── 23. Hexagonal Honeycomb ────────────────────────────────── */
+.honeycomb-section { padding-block: var(--sp-32); background: var(--clr-surface); }
+.honeycomb {
+  display: flex; flex-wrap: nowrap; justify-content: center; max-width: 1200px; margin: 0 auto; gap: 4px; padding-bottom: 144px;
+}
+.hex {
+  width: 250px; height: 288px; clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  background: var(--clr-surface-2); display: flex; flex-direction: column; align-items: center; justify-content: center;
+  padding: var(--sp-8); text-align: center; margin: -30px 10px; transition: background var(--t-base);
+}
+.hex:hover { background: var(--clr-surface-3); }
+.hex:nth-child(even) { transform: translateY(144px); }
+
+/* ─── 24. Sticky-Split Print Methods ─────────────────────────── */
+.sticky-split { display: flex; background: var(--clr-bg); }
+.sticky-left {
+  width: 40%; position: sticky; top: 0; height: 100vh;
+  display: flex; flex-direction: column; justify-content: center; padding: var(--sp-12) var(--container-pad);
+  border-right: 1px solid var(--clr-border);
+}
+.scroll-right { width: 60%; }
+.scroll-panel {
+  min-height: 100vh; display: flex; flex-direction: column; justify-content: center;
+  padding: var(--sp-16); border-bottom: 1px solid var(--clr-border);
+}
+
+/* ─── 25. 3D Flipping Cards ──────────────────────────────────── */
+.flip-section { padding-block: var(--sp-32); background: var(--clr-surface); perspective: 1000px; }
+.flip-grid { display: flex; gap: var(--sp-8); justify-content: center; }
+.flip-card { width: 400px; height: 500px; position: relative; transform-style: preserve-3d; transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+.flip-card:hover { transform: rotateY(180deg); }
+.flip-front, .flip-back {
+  position: absolute; inset: 0; backface-visibility: hidden; border-radius: var(--r-xl);
+  display: flex; flex-direction: column; align-items: center; justify-content: center; padding: var(--sp-8); text-align: center;
+}
+.flip-front { background: var(--clr-surface-2); border: 1px solid var(--clr-border); }
+.flip-back { background: var(--clr-gold); color: #000; transform: rotateY(180deg); }
+
+/* ─── 26. Wave SVG Section ───────────────────────────────────── */
+.wave-section { position: relative; background: var(--clr-bg); padding-block: 150px; text-align: center; }
+.wave-top, .wave-bottom { position: absolute; left: 0; right: 0; width: 100%; overflow: hidden; line-height: 0; }
+.wave-top { top: 0; transform: rotate(180deg); }
+.wave-bottom { bottom: 0; }
+.wave-svg { position: relative; display: block; width: calc(100% + 1.3px); height: 80px; fill: var(--clr-surface); }
+
+/* ─── 28. Terminal CTA ─────────────────────────────────────── */
+.terminal-section { padding-block: var(--sp-32); background: #000; }
+.terminal-split { display: grid; grid-template-columns: 1fr 1fr; gap: var(--sp-12); align-items: center; }
+.terminal-visual { position: relative; min-height: 400px; border-radius: var(--r-xl); overflow: hidden; }
+.terminal-visual .real-img { position: absolute; inset: 0; border: none; }
+.terminal-window {
+  border: 1px solid var(--clr-border-dark); border-radius: var(--r-md);
+  background: var(--clr-surface-2); overflow: hidden; width: 100%;
+}
+.terminal-header {
+  background: var(--clr-surface-3); padding: var(--sp-3) var(--sp-4);
+  display: flex; gap: 8px; border-bottom: 1px solid var(--clr-border-dark);
+}
+.dot { width: 12px; height: 12px; border-radius: 50%; display: inline-block; }
+.terminal-body { padding: var(--sp-8); font-family: 'Courier New', Courier, monospace; color: #00ff00; }
+.term-line { margin-bottom: var(--sp-4); font-size: 1.125rem; line-height: 1.5; }
+.term-line a { color: #fff; text-decoration: underline; text-decoration-color: #00ff00; }
+.term-line a:hover { color: #00ff00; }
+.term-benefit { color: #888; font-size: 0.9rem; margin-top: -10px; display: block; margin-bottom: var(--sp-4); }
+.term-cursor { display: inline-block; width: 10px; height: 1em; background: #0f0; animation: blink 1s step-end infinite; }
+@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+@media (max-width: 1024px) {
+  .honeycomb { flex-direction: column; align-items: center; gap: var(--sp-4); margin: 0; }
+  .hex { margin: 0; transform: none !important; clip-path: none; border-radius: var(--r-xl); width: 100%; height: auto; }
+  .sticky-split { flex-direction: column; }
+  .sticky-left { width: 100%; height: auto; position: static; border-right: none; border-bottom: 1px solid var(--clr-border); padding-block: var(--sp-12); }
+  .scroll-right { width: 100%; }
+  .scroll-panel { min-height: 50vh; }
+  .flip-grid { flex-direction: column; align-items: center; }
+  .flip-card { width: 100%; max-width: 400px; height: 400px; }
+}

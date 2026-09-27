@@ -1,0 +1,87 @@
+/* ============================================================
+   BOXCRAFT PRO — Bulk Orders (Layouts 28-32)
+   ============================================================ */
+
+/* ─── 28. Text Clip Hero ─────────────────────────────────────── */
+.hero-clip {
+  min-height: 100vh; display: flex; align-items: center; justify-content: center;
+  background: #000; text-align: center;
+}
+.clip-text {
+  font-family: var(--font-display); font-size: clamp(5rem, 15vw, 20rem);
+  font-weight: 700; line-height: 1.2; text-transform: uppercase;
+  background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" fill="%231a1a1a"/><circle cx="50" cy="50" r="40" fill="%23d4af37"/></svg>');
+  background-size: cover; background-position: center;
+  -webkit-background-clip: text; color: transparent;
+}
+.clip-sub { font-size: 1.5rem; color: #fff; margin-top: var(--sp-8); letter-spacing: 0.1em; text-transform: uppercase; }
+
+/* ─── 29. Staircase Layout (Tiers) ───────────────────────────── */
+.staircase-section { padding-block: var(--sp-32); background: var(--clr-surface); }
+.staircase-container { display: flex; flex-direction: column; align-items: center; gap: var(--sp-4); }
+.stair-step {
+  width: 100%; background: var(--clr-surface-2); padding: var(--sp-8);
+  border-radius: var(--r-md); border: 1px solid var(--clr-border);
+  display: flex; justify-content: space-between; align-items: center;
+}
+.stair-1 { max-width: 600px; }
+.stair-2 { max-width: 800px; border-color: var(--clr-gold); }
+.stair-3 { max-width: 1000px; }
+
+/* ─── 30. Blueprint Aesthetic ────────────────────────────────── */
+.blueprint-section {
+  padding-block: var(--sp-32); background-color: #0A192F;
+  background-image: linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+  linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+  background-size: 40px 40px; color: #8892B0;
+}
+.blueprint-box {
+  border: 2px solid #64FFDA; padding: var(--sp-12); position: relative;
+  max-width: 800px; margin: 0 auto; background: rgba(10, 25, 47, 0.8); backdrop-filter: blur(4px);
+}
+.blueprint-box h2 { color: #CCD6F6; }
+.blueprint-box::before, .blueprint-box::after {
+  content: ''; position: absolute; width: 20px; height: 20px; border: 2px solid #64FFDA;
+}
+.blueprint-box::before { top: -2px; left: -2px; border-right: none; border-bottom: none; }
+.blueprint-box::after { bottom: -2px; right: -2px; border-left: none; border-top: none; }
+
+/* ─── 31. Conveyor Belt Scroll ───────────────────────────────── */
+.conveyor-section { overflow: hidden; padding-block: var(--sp-24); background: var(--clr-bg); }
+.conveyor-track { display: flex; gap: var(--sp-4); width: 200%; animation: conveyor 20s linear infinite; }
+@keyframes conveyor { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+.conveyor-box {
+  width: 400px; flex-shrink: 0; background: var(--clr-surface);
+  border: 1px solid var(--clr-border); padding: var(--sp-8); border-radius: 0;
+  text-align: center;
+}
+
+/* ─── 32. Circular Expanding CTA ───────────────────────────────── */
+.circle-cta-section {
+  position: relative; height: 80vh; display: flex; align-items: center; background: var(--clr-bg); overflow: hidden;
+}
+.circle-bg-visual { position: absolute; inset: 0; z-index: 0; opacity: 0.4; }
+.circle-bg-visual .img-ph { border: none; border-radius: 0; position: absolute; inset: 0; }
+.circle-cta-content {
+  position: relative; z-index: 1; display: flex; justify-content: space-between; align-items: center; width: 100%;
+}
+.circle-benefit-box { max-width: 500px; }
+.circle-btn {
+  width: 300px; height: 300px; border-radius: 50%; background: var(--clr-gold); color: #000;
+  display: flex; align-items: center; justify-content: center; text-decoration: none;
+  font-family: var(--font-display); font-size: 2.5rem; text-transform: uppercase;
+  transition: transform var(--t-base), background var(--t-fast); flex-shrink: 0;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+}
+.circle-btn:hover { transform: scale(1.1); background: #fff; }
+
+@media (max-width: 1024px) {
+  .circle-cta-content { flex-direction: column; text-align: center; gap: var(--sp-12); }
+  .circle-btn { width: 250px; height: 250px; font-size: 2rem; }
+}
+
+@media (max-width: 1024px) {
+  .stair-step { flex-direction: column; text-align: center; gap: var(--sp-4); }
+  .conveyor-track { animation-duration: 30s; }
+  .circle-btn { width: 200px; height: 200px; font-size: 1.5rem; }
+}
