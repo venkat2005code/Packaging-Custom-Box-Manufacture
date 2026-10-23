@@ -45,14 +45,72 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- Mobile Menu Toggle ---
+    // --- Mobile Navigation Controller ---
     const menuToggle = document.querySelector('.menu-toggle');
     const mainNav = document.querySelector('.main-nav');
     
+    // Create backdrop element if it doesn't exist
+    let backdrop = document.querySelector('.nav-backdrop');
+    if (!backdrop) {
+        backdrop = document.createElement('div');
+        backdrop.className = 'nav-backdrop';
+        document.body.appendChild(backdrop);
+    }
+
+    const closeMobileNav = () => {
+        if (mainNav) mainNav.classList.remove('active');
+        if (menuToggle) menuToggle.classList.remove('active');
+        if (backdrop) backdrop.classList.remove('active');
+        document.body.style.overflow = '';
+    };
+
+    const openMobileNav = () => {
+        if (mainNav) mainNav.classList.add('active');
+        if (menuToggle) menuToggle.classList.add('active');
+        if (backdrop) backdrop.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    };
+
     if (menuToggle && mainNav) {
-        menuToggle.addEventListener('click', () => {
-            mainNav.classList.toggle('active');
-            menuToggle.classList.toggle('active');
+        menuToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const isOpen = mainNav.classList.contains('active');
+            if (isOpen) {
+                closeMobileNav();
+            } else {
+                openMobileNav();
+            }
+        });
+
+        // Close on backdrop click
+        backdrop.addEventListener('click', closeMobileNav);
+
+        // Close when clicking any nav link (except dropdown toggles)
+        mainNav.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                const parentLi = link.closest('.has-dropdown');
+                // If it is the top-level link of a dropdown in mobile view, toggle dropdown instead of closing
+                if (parentLi && parentLi.querySelector('.nav-link') === link && window.innerWidth <= 1024) {
+                    e.preventDefault();
+                    parentLi.classList.toggle('open');
+                    return;
+                }
+                closeMobileNav();
+            });
+        });
+
+        // Close on ESC key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && mainNav.classList.contains('active')) {
+                closeMobileNav();
+            }
+        });
+
+        // Clean up state if resized to desktop
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 1024 && mainNav.classList.contains('active')) {
+                closeMobileNav();
+            }
         });
     }
 });

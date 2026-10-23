@@ -18,7 +18,7 @@
 /* ─── 23. Hexagonal Honeycomb ────────────────────────────────── */
 .honeycomb-section { padding-block: var(--sp-32); background: var(--clr-surface); }
 .honeycomb {
-  display: flex; flex-wrap: nowrap; justify-content: center; max-width: 1200px; margin: 0 auto; gap: 4px; padding-bottom: 144px;
+  display: flex; flex-wrap: wrap; justify-content: center; max-width: 1200px; margin: 0 auto; gap: 4px; padding-bottom: 144px;
 }
 .hex {
   width: 250px; height: 288px; clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
@@ -44,7 +44,7 @@
 /* ─── 25. 3D Flipping Cards ──────────────────────────────────── */
 .flip-section { padding-block: var(--sp-32); background: var(--clr-surface); perspective: 1000px; }
 .flip-grid { display: flex; gap: var(--sp-8); justify-content: center; }
-.flip-card { width: 400px; height: 500px; position: relative; transform-style: preserve-3d; transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+.flip-card { width: 400px; max-width: 100%; height: clamp(360px, 60vh, 500px); position: relative; transform-style: preserve-3d; transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
 .flip-card:hover { transform: rotateY(180deg); }
 .flip-front, .flip-back {
   position: absolute; inset: 0; backface-visibility: hidden; border-radius: var(--r-xl);
@@ -82,13 +82,54 @@
 .term-cursor { display: inline-block; width: 10px; height: 1em; background: #0f0; animation: blink 1s step-end infinite; }
 @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
 
+/* Light theme — terminal CTA section */
+[data-theme="light"] .terminal-section { background: var(--clr-surface); }
+[data-theme="light"] .terminal-window {
+  background: #1A1A2E;
+  border-color: rgba(0, 0, 0, 0.25);
+}
+[data-theme="light"] .terminal-header {
+  background: #12122A;
+  border-bottom-color: rgba(255, 255, 255, 0.1);
+}
+[data-theme="light"] .terminal-body { color: #00e676; }
+[data-theme="light"] .term-line a { color: #e0e0e0; text-decoration-color: #00e676; }
+[data-theme="light"] .term-benefit { color: #aaaaaa; }
+
 @media (max-width: 1024px) {
-  .honeycomb { flex-direction: column; align-items: center; gap: var(--sp-4); margin: 0; }
-  .hex { margin: 0; transform: none !important; clip-path: none; border-radius: var(--r-xl); width: 100%; height: auto; }
+  .honeycomb { flex-direction: column; align-items: center; gap: var(--sp-4); margin: 0; padding-bottom: 0; }
+  .hex { margin: 0; transform: none !important; clip-path: none; border-radius: var(--r-xl); width: 100%; max-width: 500px; height: auto; min-height: 180px; }
   .sticky-split { flex-direction: column; }
   .sticky-left { width: 100%; height: auto; position: static; border-right: none; border-bottom: 1px solid var(--clr-border); padding-block: var(--sp-12); }
   .scroll-right { width: 100%; }
-  .scroll-panel { min-height: 50vh; }
-  .flip-grid { flex-direction: column; align-items: center; }
-  .flip-card { width: 100%; max-width: 400px; height: 400px; }
+  .scroll-panel { min-height: auto; padding: var(--sp-12) var(--sp-6); }
+  .flip-grid { flex-direction: column; align-items: center; gap: var(--sp-6); }
+  .flip-card { width: 100%; max-width: 400px; height: 380px; }
+}
+
+@media (max-width: 768px) {
+  .hero-orb { min-height: auto; padding-block: calc(var(--header-height) + var(--sp-8)) var(--sp-12); }
+  .sticky-left { padding: var(--sp-8) var(--container-pad); }
+  .scroll-panel { padding: var(--sp-8) var(--sp-4); }
+  .terminal-body { padding: var(--sp-6) var(--sp-4); }
+  .flip-card { max-width: 340px; height: 340px; }
+}
+
+@media (max-width: 480px) {
+  .hero-orb { padding-block: calc(var(--header-height) + var(--sp-6)) var(--sp-8); text-align: center; }
+  .orb-bg { width: 90vw; height: 90vw; }
+  .hex { padding: var(--sp-6) var(--sp-4); min-height: 140px; }
+  .sticky-left { padding: var(--sp-6) var(--container-pad); }
+  .sticky-left h2 { font-size: clamp(1.35rem, 5.5vw, 1.75rem); }
+  .scroll-panel { padding: var(--sp-6) var(--sp-4); }
+  .scroll-panel h3 { font-size: clamp(1.15rem, 4.5vw, 1.4rem); }
+  .flip-card { max-width: 100%; height: 300px; }
+  .flip-front, .flip-back { padding: var(--sp-6) var(--sp-4); }
+  .wave-section { padding-block: var(--sp-8); }
+  .terminal-section { padding-block: var(--sp-8); }
+  .terminal-split { grid-template-columns: 1fr; gap: var(--sp-6); }
+  .terminal-visual { min-height: 180px; }
+  .terminal-body { padding: var(--sp-4) var(--sp-3); }
+  .term-line { font-size: 0.8125rem; word-break: break-word; overflow-wrap: break-word; }
+  .term-benefit { font-size: 0.75rem; }
 }

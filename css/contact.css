@@ -12,9 +12,9 @@
   background-image: radial-gradient(circle, var(--clr-border-dark) 2px, transparent 2px);
   background-size: 20px 20px; opacity: 0.3; border-radius: 50%; pointer-events: none;
 }
-.contact-container { position: relative; z-index: 2; width: 100%; display: flex; justify-content: space-between; }
-.contact-left { max-width: 500px; }
-.contact-right { flex: 1; display: flex; justify-content: flex-end; }
+.contact-container { position: relative; z-index: 2; width: 100%; display: flex; justify-content: space-between; align-items: flex-start; gap: var(--sp-8); }
+.contact-left { max-width: 500px; flex: 1; }
+.contact-right { flex: 1; display: flex; justify-content: flex-end; min-width: 0; }
 .overlap-form {
   background: rgba(10, 10, 10, 0.8); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
   border: 1px solid var(--clr-border); border-radius: var(--r-xl); padding: var(--sp-12);
@@ -27,11 +27,29 @@
 .overlap-form input:focus, .overlap-form select:focus { border-bottom-color: var(--clr-gold); }
 .overlap-form button { width: 100%; margin-top: var(--sp-8); }
 
+/* Light theme — contact hero */
+[data-theme="light"] .contact-left h1,
+[data-theme="light"] .contact-left p,
+[data-theme="light"] .contact-left span { color: #111111; }
+[data-theme="light"] .contact-left .label-mono { color: var(--clr-gold-dim, #8C7323); }
+[data-theme="light"] .overlap-form {
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.1);
+}
+[data-theme="light"] .overlap-form input,
+[data-theme="light"] .overlap-form select {
+  color: #111111;
+  border-bottom-color: rgba(0, 0, 0, 0.25);
+}
+[data-theme="light"] .overlap-form input::placeholder { color: #888888; }
+
+
 /* ─── 34. Tilted Columns (Locations) ─────────────────────────── */
 .tilted-section { padding-block: var(--sp-32); background: var(--clr-surface); overflow: hidden; }
 .tilted-grid { display: flex; gap: var(--sp-8); justify-content: center; }
 .tilt-col {
-  width: 300px; background: var(--clr-bg); padding: var(--sp-12);
+  width: clamp(240px, 80vw, 300px); background: var(--clr-bg); padding: var(--sp-12);
   border-radius: var(--r-xl); border: 1px solid var(--clr-border-dark);
   transform: rotate(-5deg); transition: transform var(--t-base), border var(--t-fast);
 }
@@ -91,8 +109,45 @@
 .mega-btn:hover { color: #fff; }
 
 @media (max-width: 1024px) {
-  .contact-container { flex-direction: column; gap: var(--sp-12); padding-top: calc(var(--header-height) + var(--sp-12)); }
-  .tilted-grid { flex-direction: column; align-items: center; }
-  .tilt-col, .tilt-col:nth-child(even) { transform: none; width: 100%; max-width: 400px; }
+  .contact-container { flex-direction: column; gap: var(--sp-8); padding-top: calc(var(--header-height) + var(--sp-6)); align-items: stretch; }
+  .contact-left, .contact-right { max-width: 100%; width: 100%; flex: none; }
+  .overlap-form { max-width: 100%; }
+  .tilted-grid { flex-direction: column; align-items: center; gap: var(--sp-6); }
+  .tilt-col, .tilt-col:nth-child(even) { transform: none; width: 100%; max-width: 420px; }
   .faq-masonry { column-count: 1; }
+  .newsletter-card { grid-template-columns: 1fr; }
+  .newsletter-visual { min-height: 240px; }
+  .newsletter-content { padding: var(--sp-8) var(--sp-6); }
+}
+
+@media (max-width: 768px) {
+  .hero-contact { min-height: auto; padding-block: calc(var(--header-height) + var(--sp-6)) var(--sp-12); }
+  .overlap-form { padding: var(--sp-8) var(--sp-6); }
+  .tilt-col { padding: var(--sp-8) var(--sp-6); }
+  .folder-grid { grid-template-columns: 1fr; }
+  .newsletter-section, .tilted-section, .faq-section, .resources-section { padding-block: var(--sp-16); }
+}
+
+@media (max-width: 480px) {
+  .hero-contact { padding-block: calc(var(--header-height) + var(--sp-4)) var(--sp-8); min-height: auto; }
+  .contact-container { padding-inline: 0; }
+  .contact-left { padding-inline: 0; }
+  .contact-left h1 { font-size: clamp(1.75rem, 6.5vw, 2.25rem); }
+  .overlap-form { padding: var(--sp-6) var(--sp-4); width: 100%; max-width: 100%; border-radius: var(--r-lg); }
+  .overlap-form input, .overlap-form select { padding: var(--sp-3) 0; font-size: 0.9375rem; width: 100%; }
+  .overlap-form button { width: 100%; }
+  .tilted-section { padding-block: var(--sp-8); overflow: hidden; }
+  .tilted-grid { padding-inline: 0; }
+  .tilt-col { padding: var(--sp-6) var(--sp-4); width: 100%; max-width: 100%; border-radius: var(--r-lg); }
+  .tilt-col, .tilt-col:nth-child(even) { transform: none; }
+  .faq-section { padding-block: var(--sp-8); }
+  .faq-item { padding: var(--sp-6) var(--sp-4); margin-bottom: var(--sp-4); }
+  .faq-item h4 { font-size: 1rem; }
+  .folder-grid { padding-inline: 0; }
+  .folder { width: 100%; height: auto; min-height: 160px; padding: var(--sp-6) var(--sp-4); }
+  .newsletter-content { padding: var(--sp-6) var(--sp-4); }
+  .newsletter-content h2 { font-size: 1.5rem; }
+  .newsletter-benefit { font-size: 0.9375rem; }
+  .mega-newsletter-form input { font-size: 1rem; }
+  .mega-newsletter-form button { width: 100%; }
 }

@@ -20,7 +20,7 @@
 }
 .carousel-track::-webkit-scrollbar { display: none; }
 .carousel-card {
-  min-width: 400px; scroll-snap-align: center; background: var(--clr-bg);
+  min-width: clamp(260px, 75vw, 380px); scroll-snap-align: center; background: var(--clr-bg);
   padding: var(--sp-6); border: 1px solid var(--clr-border); border-radius: var(--r-xl);
 }
 .carousel-card .img-ph { aspect-ratio: 4/3; margin-bottom: var(--sp-6); border: none; }
@@ -29,8 +29,8 @@
 .deck-section { padding-block: var(--sp-32); background: var(--clr-bg); }
 .deck-container { position: relative; height: 500px; display: flex; justify-content: center; align-items: center; }
 .deck-card {
-  position: absolute; width: 400px; height: 500px; background: var(--clr-surface-2);
-  border: 1px solid var(--clr-border-dark); border-radius: var(--r-xl); padding: var(--sp-8);
+  position: absolute; width: min(400px, calc(100% - 32px)); height: clamp(420px, 70vh, 500px); background: var(--clr-surface-2);
+  border: 1px solid var(--clr-border-dark); border-radius: var(--r-xl); padding: var(--sp-6);
   box-shadow: 0 -20px 40px rgba(0,0,0,0.5); transition: transform var(--t-base);
 }
 .deck-1 { transform: translateY(-40px) scale(0.9); z-index: 1; opacity: 0.6; }
@@ -75,14 +75,58 @@
 .ticket-stub::after { bottom: -20px; }
 
 @media (max-width: 1024px) {
-  .waterfall-grid { grid-template-columns: repeat(2, 1fr); }
-  .wf-col:nth-child(even) { margin-top: 40px; }
+  .waterfall-grid { grid-template-columns: repeat(2, 1fr); gap: var(--sp-6); }
+  .wf-col:nth-child(even) { margin-top: 30px; }
   .wf-col:nth-child(odd) { margin-top: 0; }
-  .bento-grid { grid-template-columns: 1fr; grid-auto-rows: auto; }
-  .bento-tall, .bento-wide, .bento-huge { grid-column: span 1; grid-row: span 1; min-height: 250px; }
+  .bento-grid { grid-template-columns: 1fr; grid-auto-rows: auto; gap: var(--sp-4); }
+  .bento-tall, .bento-wide, .bento-huge { grid-column: span 1; grid-row: span 1; min-height: 240px; }
   .ticket-stub { flex-direction: column; }
-  .ticket-main { border-right: none; border-bottom: 3px dashed rgba(0,0,0,0.2); }
-  .ticket-stub::before, .ticket-stub::after { right: 50%; transform: translateX(50%); left: auto; }
-  .ticket-stub::before { left: -20px; right: auto; top: auto; bottom: 25%; transform: translateY(50%); }
-  .ticket-stub::after { right: -20px; left: auto; top: auto; bottom: 25%; transform: translateY(50%); }
+  .ticket-left { border-right: none; border-bottom: 2px dashed rgba(0,0,0,0.2); padding: var(--sp-8) var(--sp-6); }
+  .ticket-right { padding: var(--sp-8) var(--sp-6); }
+  .ticket-stub::before { left: 50%; top: auto; bottom: auto; right: auto; transform: translate(-50%, -50%); display: none; }
+  .ticket-stub::after { display: none; }
 }
+
+@media (max-width: 768px) {
+  .waterfall-grid { grid-template-columns: 1fr; gap: var(--sp-6); }
+  .wf-col { margin-top: 0 !important; }
+  .ticket-benefit { font-size: 1rem; }
+  .deck-card { min-height: 280px; }
+  .ticket-cta-section { padding-block: 80px; }
+}
+
+@media (max-width: 480px) {
+  .hero-waterfall { padding-top: calc(var(--header-height) + var(--sp-8)); padding-bottom: var(--sp-8); }
+  .waterfall-text h1 { font-size: clamp(1.5rem, 6.5vw, 2rem); }
+  .waterfall-text p { font-size: 0.9375rem; }
+  .carousel-card { min-width: clamp(260px, 88vw, 320px); }
+  .deck-section { padding-block: var(--sp-8); }
+  .deck-card { padding: var(--sp-4); min-height: 240px; }
+  .bento-section { padding-block: var(--sp-8); }
+  .bento-item { padding: var(--sp-4); min-height: 160px; }
+  .ticket-cta-section { padding-block: var(--sp-8); }
+  .ticket-left { padding: var(--sp-6) var(--sp-4); }
+  .ticket-right { padding: var(--sp-6) var(--sp-4); }
+  .ticket-left h2 { font-size: clamp(1.35rem, 5.5vw, 1.75rem); }
+  .ticket-benefit { font-size: 0.875rem; max-width: 100%; }
+  .ticket-right .btn { width: 100%; text-align: center; max-width: 100%; }
+}
+
+/* ─── Light Theme Overrides ─────────────────────────────── */
+/* Deck cards — give a proper dark base so gold/text reads on image */
+[data-theme="light"] .deck-card {
+  background: #1A1A1A;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+[data-theme="light"] .deck-card p { color: #CCCCCC; }
+
+/* Bento items — boost image contrast with a dark tinted overlay */
+[data-theme="light"] .bento-item {
+  background: #1A1A1A;
+}
+[data-theme="light"] .bento-item h4 { color: var(--clr-gold); }
+[data-theme="light"] .bento-item > div p { color: #CCCCCC; }
+
+/* Heading in the structural categories section */
+[data-theme="light"] .bento-section h2 { color: #111111; }
+[data-theme="light"] .bento-section .label-mono { color: var(--clr-gold-dim, #8C7323); }

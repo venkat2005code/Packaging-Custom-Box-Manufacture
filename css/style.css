@@ -52,7 +52,7 @@
   
   /* Layout */
   --container-max: 1280px;
-  --container-pad: clamp(24px, 5vw, 64px);
+  --container-pad: clamp(16px, 4vw, 64px);
   --header-height: 80px;
 }
 
@@ -68,22 +68,35 @@
   --clr-text-3:       #888888;
 }
 
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { font-size: 16px; scroll-behavior: smooth; }
+*, *::before, *::after {
+  box-sizing: border-box;
+  min-width: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  overflow-x: clip;
+  max-width: 100%;
+}
 body {
   font-family: var(--font-body);
   color: var(--clr-text);
   background-color: var(--clr-bg);
   line-height: 1.6;
-  overflow-x: hidden;
+  overflow-x: clip;
+  max-width: 100%;
+  width: 100%;
+  position: relative;
   transition: background-color var(--t-base), color var(--t-base);
 }
 
 body[dir="rtl"] { direction: rtl; text-align: right; }
 
 img { display: block; max-width: 100%; height: auto; }
+
 a { color: inherit; text-decoration: none; }
-ul { list-style: none; }
+ul, ol { list-style: none; margin: 0; padding: 0; }
 button { cursor: pointer; border: none; background: none; font-family: inherit; }
 
 h1, h2, h3, h4, h5, h6 {
@@ -91,12 +104,14 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 500;
   line-height: 1.2;
   color: var(--clr-text);
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
-/* Reduced massive typography to look elegant but not broken */
-h1 { font-size: clamp(2.5rem, 5vw, 4.5rem); }
-h2 { font-size: clamp(2rem, 4vw, 3.5rem); margin-bottom: var(--sp-6); }
-h3 { font-size: clamp(1.5rem, 3vw, 2.5rem); margin-bottom: var(--sp-4); }
+/* Reduced massive typography to look elegant and fluid across all screen sizes */
+h1 { font-size: clamp(2rem, 5vw, 4.5rem); }
+h2 { font-size: clamp(1.65rem, 4vw, 3.5rem); margin-bottom: var(--sp-6); }
+h3 { font-size: clamp(1.35rem, 3vw, 2.5rem); margin-bottom: var(--sp-4); }
 h4 { font-size: 1.25rem; font-weight: 600; margin-bottom: var(--sp-2); }
 
 p { font-size: 1.0625rem; color: var(--clr-text-2); margin-bottom: var(--sp-4); }
@@ -115,12 +130,34 @@ p:last-child { margin-bottom: 0; }
   color: var(--clr-gold);
   display: inline-flex;
   align-items: center;
-  gap: var(--sp-4);
+  gap: var(--sp-3);
   margin-bottom: var(--sp-4);
+  line-height: 1;
 }
-.label-mono::before { content: ''; width: 30px; height: 1px; background: var(--clr-gold); }
+.label-mono::before { content: ''; width: 24px; height: 1px; background: var(--clr-gold); flex-shrink: 0; }
 [dir="rtl"] .label-mono::before { display: none; }
-[dir="rtl"] .label-mono::after { content: ''; width: 30px; height: 1px; background: var(--clr-gold); }
+[dir="rtl"] .label-mono::after { content: ''; width: 24px; height: 1px; background: var(--clr-gold); flex-shrink: 0; }
+
+/* Centered contexts get symmetric lines on both sides */
+.text-center .label-mono,
+.hero-content .label-mono,
+.marquee-front .label-mono {
+  justify-content: center;
+}
+.text-center .label-mono::after,
+.hero-content .label-mono::after,
+.marquee-front .label-mono::after {
+  content: '';
+  width: 24px;
+  height: 1px;
+  background: var(--clr-gold);
+  flex-shrink: 0;
+}
+[dir="rtl"] .text-center .label-mono::before,
+[dir="rtl"] .hero-content .label-mono::before,
+[dir="rtl"] .marquee-front .label-mono::before {
+  display: inline-block;
+}
 
 .container {
   width: 100%;
@@ -214,7 +251,69 @@ p:last-child { margin-bottom: 0; }
 }
 .form-control:focus { border-color: var(--clr-gold); }
 
-@media (max-width: 992px) { .grid-2, .grid-3 { grid-template-columns: 1fr; } }
+@media (max-width: 992px) {
+  .grid-2, .grid-3 { grid-template-columns: 1fr; gap: var(--sp-8); }
+}
+
+@media (max-width: 768px) {
+  .section { padding-block: var(--sp-16); }
+  .grid-2, .grid-3 { gap: var(--sp-6); }
+  .reveal-left, .reveal-right, [dir="rtl"] .reveal-left, [dir="rtl"] .reveal-right {
+    transform: translateY(20px);
+  }
+}
+
+@media (max-width: 480px) {
+  :root { --container-pad: 16px; }
+  .container { box-sizing: border-box; }
+  .section { padding-block: var(--sp-12); }
+  h1 { font-size: clamp(1.75rem, 6.8vw, 2.25rem); }
+  h2 { font-size: clamp(1.35rem, 5.2vw, 1.75rem); line-height: 1.25; margin-bottom: var(--sp-4); }
+  h3 { font-size: clamp(1.15rem, 4.2vw, 1.4rem); margin-bottom: var(--sp-3); }
+  p { font-size: 0.9375rem; line-height: 1.55; }
+  .label-mono {
+    font-size: 0.6875rem;
+    letter-spacing: 0.1em;
+    gap: 8px;
+    margin-bottom: var(--sp-3);
+  }
+  .label-mono::before { width: 14px; }
+  .text-center .label-mono::after,
+  .hero-content .label-mono::after,
+  .marquee-front .label-mono::after {
+    width: 14px;
+  }
+  .card { padding: var(--sp-5) var(--sp-4); }
+  /* Only make CTA buttons full-width on mobile, not inline utility buttons */
+  .hero-actions .btn,
+  .marquee-btn,
+  .overlap-form button,
+  .inline-brutalist-form button,
+  .mega-newsletter-form button {
+    width: 100%;
+    max-width: 290px;
+    text-align: center;
+  }
+}
 
 /* Utilities */
 .text-center { text-align: center; }
+.mb-12 { margin-bottom: var(--sp-12); }
+.mb-8 { margin-bottom: var(--sp-8); }
+
+/* Section overflow containment — prevents ANY child from causing page-wide horizontal scroll */
+.section,
+.hero-craft,
+.hero-global,
+.hero-dock,
+.hero-orb,
+.hero-contact,
+.hero-clip,
+.hero-waterfall,
+.hero-industry,
+.process-section,
+.marquee-cta-section,
+.site-footer {
+  overflow-x: clip;
+  max-width: 100%;
+}

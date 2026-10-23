@@ -5,8 +5,8 @@
 /* ─── 11. Dock Hero ──────────────────────────────────────────── */
 .hero-dock {
   position: relative; min-height: 80vh; background: var(--clr-surface-2);
-  display: flex; align-items: flex-end; justify-content: center;
-  padding-bottom: var(--sp-8); overflow: hidden;
+  display: flex; align-items: center; justify-content: center;
+  padding-block: var(--sp-24); overflow: hidden;
 }
 .hero-dock .img-ph { position: absolute; inset: 0; border: none; border-radius: 0; opacity: 0.2; }
 .dock-card {
@@ -32,6 +32,17 @@
 .acc-card:hover .acc-content { opacity: 1; transition-delay: 0.3s; }
 .acc-title { font-size: 2.5rem; writing-mode: vertical-rl; transform: rotate(180deg); margin: auto; transition: var(--t-base); }
 .acc-card:hover .acc-title { writing-mode: horizontal-tb; transform: none; font-size: 3rem; margin: 0 0 var(--sp-4) 0; }
+
+/* Light theme — accordion cards stay dark so image text contrast is preserved */
+[data-theme="light"] .acc-card {
+  background: #1A1A1A;
+  border-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+}
+[data-theme="light"] .acc-card:hover { background: #222222; }
+[data-theme="light"] .acc-card .acc-title { color: var(--clr-gold); }
+[data-theme="light"] .acc-card .acc-content p { color: #CCCCCC; }
+
 
 /* ─── 13. Map Silhouette ─────────────────────────────────────── */
 .map-section { background: var(--clr-bg); position: relative; padding-block: var(--sp-24); }
@@ -60,13 +71,13 @@
   position: relative; height: 600px; display: flex; align-items: center; justify-content: center;
 }
 .venn-circle {
-  position: absolute; width: 400px; height: 400px; border-radius: 50%;
+  position: absolute; width: min(400px, 90vw); height: min(400px, 90vw); border-radius: 50%;
   border: 2px dashed var(--clr-border-dark); display: flex; align-items: center; justify-content: center;
-  flex-direction: column; padding: var(--sp-8);
+  flex-direction: column; padding: var(--sp-6);
 }
 .venn-circle p { max-width: 250px; text-align: center; line-height: 1.5; }
-.venn-1 { transform: translateX(-150px); background: rgba(20,20,20,0.5); backdrop-filter: blur(8px); z-index: 1; }
-.venn-2 { transform: translateX(150px); background: rgba(20,20,20,0.5); backdrop-filter: blur(8px); z-index: 2; }
+.venn-1 { transform: translateX(-120px); background: rgba(20,20,20,0.5); backdrop-filter: blur(8px); z-index: 1; }
+.venn-2 { transform: translateX(120px); background: rgba(20,20,20,0.5); backdrop-filter: blur(8px); z-index: 2; }
 [data-theme="light"] .venn-1, [data-theme="light"] .venn-2 { background: rgba(240,240,240,0.5); }
 
 /* ─── 15. Vertical Timeline ──────────────────────────────────── */
@@ -79,7 +90,7 @@
 .tl-item {
   display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--sp-12); position: relative;
 }
-.tl-content { width: 45%; background: var(--clr-surface-2); padding: var(--sp-6); border-radius: var(--r-md); }
+.tl-content { width: 45%; background: var(--clr-surface-2); padding: var(--sp-6); border-radius: var(--r-md); overflow-wrap: break-word; word-break: break-word; }
 .tl-item:nth-child(even) .tl-content { margin-left: auto; }
 .tl-dot {
   position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
@@ -111,11 +122,47 @@
 .split-half h2 { font-size: clamp(2rem, 5vw, 4rem); color: inherit; }
 
 @media (max-width: 1024px) {
-  .accordion-grid { flex-direction: column; height: auto; }
-  .acc-title { writing-mode: horizontal-tb; transform: none; font-size: 2rem; }
-  .venn-1, .venn-2 { position: static; transform: none; width: 100%; max-width: 400px; margin: 0 auto var(--sp-4); }
+  .accordion-grid { flex-direction: column; height: auto; gap: var(--sp-4); }
+  .acc-card { min-height: 220px; }
+  .acc-card .acc-content { opacity: 1; }
+  .acc-title { writing-mode: horizontal-tb; transform: none; font-size: 2rem; margin-bottom: var(--sp-4); }
+  .venn-container { height: auto; flex-direction: column; gap: var(--sp-4); padding-block: var(--sp-6); }
+  .venn-circle { position: static; width: 100%; max-width: 340px; height: auto; min-height: 240px; border-radius: var(--r-xl); }
+  .venn-1, .venn-2 { position: static; transform: none; margin: 0 auto; }
   .timeline-wrap::before { left: 0; }
-  .tl-content { width: 90%; margin-left: auto !important; }
-  .tl-dot { left: 0; }
-  .split-cta-section { flex-direction: column; height: auto; min-height: 80vh; }
+  .tl-content { width: calc(100% - 30px); margin-left: auto !important; }
+  .tl-dot { left: 0; transform: translate(-50%, -50%); }
+  .split-hover-section { flex-direction: column; height: auto; min-height: auto; }
+  .split-panel { min-height: 260px; border-right: none; border-bottom: 1px solid var(--clr-border); }
+  .split-benefit { opacity: 1; transform: none; height: auto; margin-bottom: var(--sp-4); }
+}
+
+@media (max-width: 768px) {
+  .hero-dock { min-height: auto; padding-block: calc(var(--header-height) + var(--sp-6)) var(--sp-8); }
+  .dock-card { padding: var(--sp-8) var(--sp-4); width: 100%; }
+  .map-labels { flex-wrap: wrap; gap: var(--sp-4); justify-content: center; }
+  .split-panel-content { padding: var(--sp-6) var(--sp-4); }
+}
+
+@media (max-width: 480px) {
+  .hero-dock { padding-block: calc(var(--header-height) + var(--sp-4)) var(--sp-6); }
+  .dock-card { padding: var(--sp-6) var(--sp-3); border-radius: var(--r-lg); width: 100%; }
+  .dock-card h1 { font-size: clamp(1.5rem, 6.5vw, 1.85rem); }
+  .dock-card p { font-size: 0.9375rem; }
+  .acc-card { padding: var(--sp-6) var(--sp-4); min-height: 180px; }
+  .acc-title { font-size: 1.35rem; }
+  .map-section { padding-block: var(--sp-8); }
+  .map-visual { aspect-ratio: 2/1; }
+  .map-labels { flex-direction: column; align-items: center; gap: var(--sp-3); }
+  .venn-section { padding-block: var(--sp-8); }
+  .venn-container { padding-block: var(--sp-4); }
+  .venn-circle { max-width: 90vw; min-height: 200px; padding: var(--sp-4); }
+  .venn-circle p { font-size: 0.875rem; max-width: 100%; }
+  .timeline-wrap { padding-inline: var(--sp-2); }
+  .tl-content { padding: var(--sp-4) var(--sp-3); }
+  .tl-content h4 { font-size: 0.9375rem; }
+  .tl-content p { font-size: 0.875rem; }
+  .split-panel { min-height: 200px; }
+  .split-panel-content { padding: var(--sp-6) var(--sp-3); }
+  .split-panel h2 { font-size: clamp(1.35rem, 5.5vw, 1.75rem); }
 }

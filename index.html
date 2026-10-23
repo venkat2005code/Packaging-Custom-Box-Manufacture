@@ -41,18 +41,18 @@
 
     <main>
         <!-- 1. Cinematic Hero -->
-        <section class="hero-craft hero-global" style="background: var(--clr-bg);">
-            <img src="images/manufacturing-line.png" alt="Packaging Manufacturing" class="real-img" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.3; z-index: 0;">
-            <div style="position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(10,10,10,0.8), rgba(10,10,10,0.4)); z-index: 0; pointer-events: none;"></div>
+        <section class="hero-craft">
+            <img src="images/manufacturing-line.png" alt="Packaging Manufacturing" class="hero-craft-bg-img real-img">
+            <div class="hero-craft-overlay"></div>
             <div class="hero-floating-images">
                 <div class="float-img float-1 glass"><img src="images/bento-magnetic.png" alt="Magnetic Box" style="width: 100%; height: 100%; object-fit: cover;"></div>
                 <div class="float-img float-2 glass"><img src="images/bento-folding.png" alt="Folding Carton" style="width: 100%; height: 100%; object-fit: cover;"></div>
             </div>
-            <div class="hero-content reveal">
+            <div class="hero-content">
                 <span class="label-mono">Premium Custom Solutions</span>
                 <h1 class="hero-title">Packaging & Custom <br><span>Box Manufacturing.</span></h1>
-                <p style="max-width: 700px; margin: 0 auto var(--sp-8); font-size: 1.25rem;">We design and manufacture high-quality bespoke packaging and custom boxes to elevate your brand's presence and unboxing experience.</p>
-                <div class="flex gap-4" style="justify-content: center;">
+                <p class="hero-desc">We design and manufacture high-quality bespoke packaging and custom boxes to elevate your brand's presence and unboxing experience.</p>
+                <div class="hero-actions">
                     <a href="contact.html" class="btn btn-primary">Request Custom Packaging</a>
                     <a href="products.html" class="btn btn-outline">View Products</a>
                 </div>
@@ -69,24 +69,24 @@
                 <div class="cap-grid">
                     <div class="cap-card cap-item-small reveal delay-1" style="position: relative; overflow: hidden; padding: 0;">
                         <img src="images/products-gift-box.png" alt="Rigid Boxes" class="real-img" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.5; transition: transform 0.5s;">
-                        <div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);"></div>
-                        <div style="position: relative; z-index: 1; padding: var(--sp-8); height: 100%; display: flex; flex-direction: column; justify-content: flex-end;">
+                        <div class="cap-overlay"></div>
+                        <div class="cap-text">
                             <h3>Rigid Boxes</h3>
                             <p>Luxurious and sturdy packaging for premium products.</p>
                         </div>
                     </div>
                     <div class="cap-card cap-item-small reveal delay-2" style="position: relative; overflow: hidden; padding: 0;">
                         <img src="images/bento-folding.png" alt="Folding Cartons" class="real-img" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.5; transition: transform 0.5s;">
-                        <div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);"></div>
-                        <div style="position: relative; z-index: 1; padding: var(--sp-8); height: 100%; display: flex; flex-direction: column; justify-content: flex-end;">
+                        <div class="cap-overlay"></div>
+                        <div class="cap-text">
                             <h3>Folding Cartons</h3>
                             <p>Versatile and cost-effective retail packaging solutions.</p>
                         </div>
                     </div>
                     <div class="cap-card cap-item-small reveal delay-3" style="position: relative; overflow: hidden; padding: 0;">
                         <img src="images/products-mailer.png" alt="Corrugated Mailers" class="real-img" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.5; transition: transform 0.5s;">
-                        <div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);"></div>
-                        <div style="position: relative; z-index: 1; padding: var(--sp-8); height: 100%; display: flex; flex-direction: column; justify-content: flex-end;">
+                        <div class="cap-overlay"></div>
+                        <div class="cap-text">
                             <h3>Corrugated Mailers</h3>
                             <p>Durable shipping boxes for e-commerce and logistics.</p>
                         </div>
@@ -177,8 +177,8 @@
             <div class="container showcase-circle">
                 <div class="circle-text reveal-left">
                     "Delivering <span style="color: var(--clr-gold); font-style: italic;">exceptional</span> packaging across diverse industries."
-                    <div style="font-size: 1rem; color: var(--clr-text-2); font-family: var(--font-body); margin-top: var(--sp-6);">
-                        <ul style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                    <div class="circle-industries-wrap">
+                        <ul class="industries-grid">
                             <li><i class="ph ph-check" style="color: var(--clr-gold);"></i> Cosmetics & Beauty</li>
                             <li><i class="ph ph-check" style="color: var(--clr-gold);"></i> Consumer Electronics</li>
                             <li><i class="ph ph-check" style="color: var(--clr-gold);"></i> Food & Beverage</li>
@@ -207,9 +207,9 @@
             </div>
             <div class="marquee-front reveal">
                 <span class="label-mono">Ready to get started?</span>
-                <h2 style="font-size: clamp(2.5rem, 5vw, 4rem);">Bring Your Packaging to Life.</h2>
+                <h2 class="marquee-title">Bring Your Packaging to Life.</h2>
                 <p class="marquee-benefit">Partner with a leading manufacturer to create custom boxes that protect your products and delight your customers.</p>
-                <a href="contact.html" class="btn btn-primary" style="padding: var(--sp-6) var(--sp-12); font-size: 1.25rem;">Enquire Now</a>
+                <a href="contact.html" class="btn btn-primary marquee-btn">Enquire Now</a>
             </div>
         </section>
     </main>
