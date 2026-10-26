@@ -24,9 +24,11 @@ document.addEventListener('DOMContentLoaded', () => {
             const newDir = currentDir === 'ltr' ? 'rtl' : 'ltr';
             
             document.documentElement.setAttribute('dir', newDir);
+            try {
+                localStorage.setItem('dir', newDir);
+            } catch (e) {}
             
-            // The button should display the mode it is currently in, as requested:
-            // "show 'LTR' when in LTR mode and 'RTL' when in RTL mode"
+            // The button should display the mode it is currently in:
             dirToggleBtn.textContent = newDir.toUpperCase();
         });
     }
@@ -34,14 +36,28 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Light/Dark Theme Toggle ---
     const themeToggleBtn = document.getElementById('theme-toggle');
     if (themeToggleBtn) {
+        const updateThemeUI = (theme) => {
+            // In light mode show moon icon (to switch to dark), in dark mode show sun icon (to switch to light)
+            themeToggleBtn.innerHTML = theme === 'light' 
+                ? '<span class="icon"><i class="ph ph-moon"></i></span>' 
+                : '<span class="icon"><i class="ph ph-sun"></i></span>';
+            themeToggleBtn.setAttribute('aria-label', theme === 'light' ? 'Switch to Dark Mode' : 'Switch to Light Mode');
+        };
+
+        // Initialize state based on current document theme
+        const initialTheme = document.documentElement.getAttribute('data-theme') || 'dark';
+        updateThemeUI(initialTheme);
+
         themeToggleBtn.addEventListener('click', () => {
-            const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
+            const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
             const newTheme = currentTheme === 'light' ? 'dark' : 'light';
             
             document.documentElement.setAttribute('data-theme', newTheme);
+            try {
+                localStorage.setItem('theme', newTheme);
+            } catch (e) {}
             
-            // Update button icon/text if necessary
-            themeToggleBtn.innerHTML = newTheme === 'light' ? '<span class="icon"><i class="ph ph-moon"></i></span>' : '<span class="icon"><i class="ph ph-sun"></i></span>';
+            updateThemeUI(newTheme);
         });
     }
 

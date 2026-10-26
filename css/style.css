@@ -16,6 +16,7 @@
   
   --clr-gold:         #D4AF37;
   --clr-gold-dim:     #8C7323;
+  --clr-gold-text:    var(--clr-gold);
   
   --clr-text:         #F5F5F5;
   --clr-text-2:       #B3B3B3;
@@ -66,6 +67,7 @@
   --clr-text:         #111111;
   --clr-text-2:       #555555;
   --clr-text-3:       #888888;
+  --clr-gold-text:    #8C6208;
 }
 
 *, *::before, *::after {

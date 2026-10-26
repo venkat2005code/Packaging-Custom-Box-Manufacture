@@ -4,45 +4,290 @@
 
 /* ─── 33. Map/Form Overlap Hero ──────────────────────────────── */
 .hero-contact {
-  position: relative; min-height: 100vh; background: var(--clr-bg);
-  display: flex; align-items: center; overflow: hidden;
+  position: relative;
+  min-height: 100vh;
+  background: var(--clr-bg);
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  padding-block: calc(var(--header-height) + var(--sp-8)) var(--sp-12);
+}
+.hero-contact-bg-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.25;
+  z-index: 0;
+  pointer-events: none;
+  transition: opacity var(--t-base);
+}
+.hero-contact-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: radial-gradient(circle at 60% 40%, rgba(10, 10, 10, 0.4) 0%, rgba(10, 10, 10, 0.85) 100%),
+              linear-gradient(to right, rgba(10, 10, 10, 0.92) 0%, rgba(10, 10, 10, 0.6) 55%, rgba(10, 10, 10, 0.88) 100%);
 }
 .map-bg {
-  position: absolute; left: -10%; top: 10%; width: 60%; height: 80%;
+  position: absolute;
+  left: -10%;
+  top: 10%;
+  width: 60%;
+  height: 80%;
   background-image: radial-gradient(circle, var(--clr-border-dark) 2px, transparent 2px);
-  background-size: 20px 20px; opacity: 0.3; border-radius: 50%; pointer-events: none;
+  background-size: 20px 20px;
+  opacity: 0.3;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 1;
 }
-.contact-container { position: relative; z-index: 2; width: 100%; display: flex; justify-content: space-between; align-items: flex-start; gap: var(--sp-8); }
-.contact-left { max-width: 500px; flex: 1; }
-.contact-right { flex: 1; display: flex; justify-content: flex-end; min-width: 0; }
-.overlap-form {
-  background: rgba(10, 10, 10, 0.8); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
-  border: 1px solid var(--clr-border); border-radius: var(--r-xl); padding: var(--sp-12);
-  width: 100%; max-width: 500px; box-shadow: 0 40px 80px rgba(0,0,0,0.5);
+.contact-container {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--sp-12);
 }
-.overlap-form input, .overlap-form select {
-  width: 100%; background: transparent; border: none; border-bottom: 1px solid var(--clr-border-dark);
-  color: var(--clr-text); padding: var(--sp-4) 0; margin-bottom: var(--sp-6); outline: none; font-family: var(--font-body);
+.contact-left {
+  max-width: 520px;
+  flex: 1;
 }
-.overlap-form input:focus, .overlap-form select:focus { border-bottom-color: var(--clr-gold); }
-.overlap-form button { width: 100%; margin-top: var(--sp-8); }
+.contact-left .label-mono {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-3);
+  margin-bottom: var(--sp-4);
+  color: var(--clr-gold);
+  font-size: 0.8125rem;
+  letter-spacing: 0.16em;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.contact-title {
+  margin: var(--sp-3) 0 var(--sp-6);
+  font-size: clamp(2.5rem, 5vw, 4.25rem);
+  line-height: 1.1;
+  color: var(--clr-text);
+  font-family: var(--font-display);
+}
+.contact-desc {
+  margin-bottom: var(--sp-10);
+  font-size: 1.1875rem;
+  line-height: 1.6;
+  color: var(--clr-text-2);
+}
 
-/* Light theme — contact hero */
-[data-theme="light"] .contact-left h1,
-[data-theme="light"] .contact-left p,
-[data-theme="light"] .contact-left span { color: #111111; }
-[data-theme="light"] .contact-left .label-mono { color: var(--clr-gold-dim, #8C7323); }
+.contact-direct {
+  padding-top: var(--sp-6);
+  border-top: 1px solid var(--clr-border);
+}
+.direct-lines-title {
+  margin-bottom: var(--sp-3);
+  color: var(--clr-gold);
+  font-size: 1.125rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-family: var(--font-label);
+}
+.direct-lines-info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+}
+.direct-line-item {
+  font-family: var(--font-label);
+  font-size: 0.9375rem;
+  letter-spacing: 0.04em;
+  color: var(--clr-text-2);
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+}
+.direct-label {
+  color: var(--clr-text-3);
+  font-size: 0.8125rem;
+  text-transform: uppercase;
+  min-width: 55px;
+}
+.direct-link {
+  color: var(--clr-text);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color var(--t-fast);
+}
+.direct-link:hover {
+  color: var(--clr-gold);
+}
+
+.contact-right {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  min-width: 0;
+}
+.overlap-form {
+  background: rgba(18, 18, 20, 0.88);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--r-xl);
+  padding: var(--sp-10) var(--sp-10);
+  width: 100%;
+  max-width: 480px;
+  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.5);
+}
+.overlap-form .form-field {
+  position: relative;
+  margin-bottom: var(--sp-5);
+}
+.overlap-form input,
+.overlap-form select {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1.5px solid rgba(255, 255, 255, 0.2);
+  color: #FFFFFF;
+  padding: var(--sp-3) 0;
+  outline: none;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  transition: border-color var(--t-fast);
+}
+.overlap-form input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+  opacity: 1;
+}
+.overlap-form select {
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+}
+.overlap-form .select-wrap {
+  position: relative;
+}
+.overlap-form .select-wrap::after {
+  content: '';
+  position: absolute;
+  right: 6px;
+  top: 45%;
+  width: 8px;
+  height: 8px;
+  border-right: 2px solid var(--clr-gold);
+  border-bottom: 2px solid var(--clr-gold);
+  transform: translateY(-50%) rotate(45deg);
+  pointer-events: none;
+}
+.overlap-form select option {
+  background: #18181A;
+  color: #FFFFFF;
+  padding: 8px;
+}
+.overlap-form input:focus,
+.overlap-form select:focus {
+  border-bottom-color: var(--clr-gold);
+}
+.overlap-form button {
+  width: 100%;
+  margin-top: var(--sp-6);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+/* ─── Light theme: Consultation Hero High-Contrast Overrides ─── */
+[data-theme="light"] .hero-contact {
+  background: #F7F7F8;
+}
+[data-theme="light"] .hero-contact-bg-img {
+  opacity: 0.08;
+  filter: grayscale(100%);
+}
+[data-theme="light"] .hero-contact-overlay {
+  background: radial-gradient(circle at 60% 40%, rgba(247, 247, 248, 0.75) 0%, rgba(247, 247, 248, 0.96) 100%),
+              linear-gradient(to right, rgba(247, 247, 248, 0.96) 0%, rgba(247, 247, 248, 0.75) 50%, rgba(247, 247, 248, 0.98) 100%);
+}
+[data-theme="light"] .map-bg {
+  opacity: 0.12;
+}
+[data-theme="light"] .contact-left .label-mono {
+  color: #8C6208;
+  font-weight: 700;
+}
+[data-theme="light"] .contact-left .label-mono::before {
+  background: #8C6208;
+}
+[data-theme="light"] .contact-title {
+  color: #111111;
+}
+[data-theme="light"] .contact-desc {
+  color: #2E2E32;
+}
+[data-theme="light"] .contact-direct {
+  border-top-color: rgba(0, 0, 0, 0.12);
+}
+[data-theme="light"] .direct-lines-title {
+  color: #8C6208;
+  font-weight: 700;
+}
+[data-theme="light"] .direct-line-item {
+  color: #222222;
+}
+[data-theme="light"] .direct-label {
+  color: #555555;
+  font-weight: 600;
+}
+[data-theme="light"] .direct-link {
+  color: #111111;
+  font-weight: 600;
+}
+[data-theme="light"] .direct-link:hover {
+  color: #8C6208;
+}
+
 [data-theme="light"] .overlap-form {
-  background: rgba(255, 255, 255, 0.92);
+  background: #FFFFFF;
   border: 1px solid rgba(0, 0, 0, 0.12);
-  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.08), 0 4px 16px rgba(0, 0, 0, 0.04);
 }
 [data-theme="light"] .overlap-form input,
 [data-theme="light"] .overlap-form select {
   color: #111111;
-  border-bottom-color: rgba(0, 0, 0, 0.25);
+  border-bottom: 1.5px solid rgba(0, 0, 0, 0.22);
+  font-weight: 500;
 }
-[data-theme="light"] .overlap-form input::placeholder { color: #888888; }
+[data-theme="light"] .overlap-form input::placeholder {
+  color: #666666;
+  opacity: 1;
+}
+[data-theme="light"] .overlap-form .select-wrap::after {
+  border-right-color: #8C6208;
+  border-bottom-color: #8C6208;
+}
+[data-theme="light"] .overlap-form select option {
+  background: #FFFFFF;
+  color: #111111;
+}
+[data-theme="light"] .overlap-form input:focus,
+[data-theme="light"] .overlap-form select:focus {
+  border-bottom-color: #8C6208;
+  color: #111111;
+}
+[data-theme="light"] .overlap-form .btn-primary {
+  background: var(--clr-gold);
+  color: #111111;
+  font-weight: 700;
+  box-shadow: 0 4px 16px rgba(212, 175, 55, 0.35);
+}
+[data-theme="light"] .overlap-form .btn-primary:hover {
+  background: #C39B2A;
+  color: #000000;
+}
 
 
 /* ─── 34. Tilted Columns (Locations) ─────────────────────────── */
@@ -55,7 +300,10 @@
 }
 .tilt-col:nth-child(even) { transform: translateY(40px) rotate(-5deg); }
 .tilt-col:hover { transform: rotate(0deg) scale(1.05); border-color: var(--clr-gold); z-index: 2; }
-.tilt-col h3 { margin-bottom: var(--sp-2); }
+.tilt-col h3, .tilt-col-title { margin-bottom: var(--sp-2); color: var(--clr-gold); font-size: 1.25rem; }
+[data-theme="light"] .tilt-col-title,
+[data-theme="light"] .tilt-col h3 { color: #8C6208; }
+[data-theme="light"] .tilt-col { background: #FFFFFF; border-color: rgba(0, 0, 0, 0.1); box-shadow: 0 10px 25px rgba(0,0,0,0.05); }
 
 /* ─── 35. Masonry FAQ ────────────────────────────────────────── */
 .faq-section { padding-block: var(--sp-32); background: var(--clr-bg); }
@@ -65,6 +313,7 @@
   border-radius: var(--r-md); margin-bottom: var(--sp-8);
 }
 .faq-item h4 { margin-bottom: var(--sp-4); color: var(--clr-gold); }
+[data-theme="light"] .faq-item h4 { color: #8C6208; }
 
 /* ─── 36. Folder Tab Resources ───────────────────────────────── */
 .resources-section { padding-block: var(--sp-32); background: var(--clr-surface); }
